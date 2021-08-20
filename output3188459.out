@@ -1,0 +1,16 @@
+Hello World!!! from 0 CPU. Total CPUs 4
+Hello World!!! from 1 CPU. Total CPUs 4
+Hello World!!! from 3 CPU. Total CPUs 4
+Hello World!!! from 2 CPU. Total CPUs 4
+Hello World from GPU!!!
+Hello World from GPU!!!
+From host cuda
+Hello World from GPU!!!
+Hello World from GPU!!!
+From host cuda
+Hello World from GPU!!!
+Hello World from GPU!!!
+From host cuda
+Hello World from GPU!!!
+Hello World from GPU!!!
+From host cuda

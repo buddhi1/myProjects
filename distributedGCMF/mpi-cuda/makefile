@@ -1,0 +1,33 @@
+GCC = g++
+CC = mpicxx
+
+# LIBB = -L/usr/lib64/ -lgeos_c
+LIBB = -L ~/myLibs/geos/lib/ -lgeos_c
+# LIBB = 
+LIBCUDA = -L/usr/local/cuda/lib64
+# LIBCUDA = /jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-10.2.89-kz7u4ix6ed53nioz4ycqin3kujcim3bs/bin/nvcc
+LIBCUDA = -L/jet/packages/pgi/21.5/Linux_x86_64/21.5/cuda/lib64
+# LIBCUDA =
+
+LFLAGS = -Wall
+LFLAGS = 
+LIBRA = 
+DEBUG =
+CFLAGS = -m64 -O2 -Wall -c -std=c++0x -I/usr/local/include
+# CFLAGS = -m64 -O2 -Wall -c -I/jet/packages/pgi/21.5/Linux_x86_64/21.5/cuda/include
+
+mpicuda: main.o local_gpu.o geoswktRead.o
+	$(CC) -O2 $(LFLAGS) -o program main.o local_gpu.o geoswktRead.o $(LIBB) $(LIBRA) $(LIBCUDA) -lcudart
+
+# mpicuda: main.o local_gpu.o 
+# 	$(CC) -O2 $(LFLAGS) -o program main.o local_gpu.o $(LIBB) $(LIBRA) $(LIBCUDA) -lcudart
+
+
+local_gpu.o: local_gpu.cu
+	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o local_gpu.o -c local_gpu.cu 	
+
+main.o: main.cpp
+	$(CC)  $(DEBUG) $(CFLAGS) -c main.cpp
+
+geoswktRead.o: geoswktRead.cpp
+	$(CC)  $(DEBUG) $(CFLAGS) -c geoswktRead.cpp
