@@ -3,7 +3,9 @@
 
 int main(int argc, char const *argv[])
 {
-	CudaJoinInterface obj1;
+	CudaJoinInterface cudaInterface;
+	// cudaInterface.createReducers(&args, geomMapPair);
+	
 
 	return 0;
 }

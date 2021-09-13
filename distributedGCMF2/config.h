@@ -5,7 +5,7 @@
 #include<vector>
 #include <cstdlib>
 #include <dirent.h>
-#include <mpi.h>
+// #include <mpi.h>
 #include <iostream>
 
 using namespace std;

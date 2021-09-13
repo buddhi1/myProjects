@@ -49,9 +49,9 @@ class CudaJoinInterface
 {
  long* prefixSum(polygonLayer *layer);
  
- void convertToFloats(const GEOSLineString* vertices, vector<coord_t> *vertVect);
- void convertMBRToFloats(const GEOSEnvelope* v, vector<coord_t> *vertVect);
- void convertMBRToLong(const GEOSEnvelope* v, vector<mbr_t> *vertVect);
+ // void convertToFloats(const GEOSLineString* vertices, vector<coord_t> *vertVect);
+ // void convertMBRToFloats(const GEOSEnvelope* v, vector<coord_t> *vertVect);
+ // void convertMBRToLong(const GEOSEnvelope* v, vector<mbr_t> *vertVect);
  
  void debugCode(int cellId, polygonLayer* layer1Data, polygonLayer* layer2Data);
  
