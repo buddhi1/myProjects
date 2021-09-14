@@ -1,9 +1,8 @@
-#include <iostream> 
-#include "CudaJoinInterfaceC.cpp"
+#include "CudaJoinInterfaceC.h"
 
 int main(int argc, char const *argv[])
 {
-	CudaJoinInterface cudaInterface;
+	CudaJoinInterface cudaInterfaceObj;
 	// cudaInterface.createReducers(&args, geomMapPair);
 	
 

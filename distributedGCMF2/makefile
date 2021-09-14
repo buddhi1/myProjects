@@ -6,7 +6,7 @@ CC = mpicxx
 LIBB = 
 LIBCUDA = -L/usr/local/cuda/lib64
 # LIBCUDA = /jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-10.2.89-kz7u4ix6ed53nioz4ycqin3kujcim3bs/bin/nvcc
-LIBCUDA = -L/jet/packages/pgi/21.5/Linux_x86_64/21.5/cuda/lib64
+# LIBCUDA = -L/jet/packages/pgi/21.5/Linux_x86_64/21.5/cuda/lib64
 # LIBCUDA =
 
 LFLAGS = -Wall
@@ -22,7 +22,7 @@ CFLAGS = -m64 -O2 -Wall -c -std=c++0x -I/usr/local/include
 # mpicuda: main.o ST_Intersect.o CudaJoinInterfaceC.o
 # 	$(CC) -O2 $(LFLAGS) -o program main.o ST_Intersect.o CudaJoinInterfaceC.o $(LIBB) $(LIBRA) $(LIBCUDA) -lcudart
 
-mpicuda: test.o ST_Intersect.o CudaJoinInterfaceC.o
+mpicuda: ST_Intersect.o CudaJoinInterfaceC.o test.o
 	$(CC) -O2 $(LFLAGS) -o program test.o ST_Intersect.o CudaJoinInterfaceC.o $(LIBB) $(LIBRA) $(LIBCUDA) -lcudart
 
 
@@ -32,8 +32,11 @@ mpicuda: test.o ST_Intersect.o CudaJoinInterfaceC.o
 # ST_Intersect.o: cuda_CMBR/ST_Intersect.cu
 # 	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c cuda_CMBR/ST_Intersect.cu 	
 
-ST_Intersect.o: cuda_CMBR/ST_Intersect.cu
-	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c cuda_CMBR/ST_Intersect.cu 	
+# ST_Intersect.o: cuda_CMBR/ST_Intersect.cu
+# 	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c cuda_CMBR/ST_Intersect.cu 	
+
+ST_Intersect.o: ST_Intersect/ST_Intersect.cu
+	nvcc -w -m64 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_60,code=sm_60 -o ST_Intersect.o -c ST_Intersect/ST_Intersect.cu 	
 
 main.o: main.cpp
 	$(CC)  $(DEBUG) $(CFLAGS) -c main.cpp

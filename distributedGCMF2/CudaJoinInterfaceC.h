@@ -57,11 +57,11 @@ class CudaJoinInterface
  
  mbr_t CoordToMBR(char* ct, char type);
  
- void gpuHelperForPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
-					vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
+ // void gpuHelperForPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
+	// 				vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
 
- void gpuHelperForMultiPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
-					    vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
+ // void gpuHelperForMultiPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
+	// 				    vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
  
  public:
  

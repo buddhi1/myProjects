@@ -1,4 +1,3 @@
-
 #include "stdio.h"
 #include "GPU_Manage.h"
 #include "Types.h"
@@ -11,7 +10,9 @@
 #include "Data_Visualization.h"
 #include "Join.h"
 
-
+// int main() {
+//   printf("Test\n");
+// }
 
 int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overlayCoords, int* bVNum, int* oVNum, long *bVPSNum, long *oVPSNum, 
                  mbr_t* seqMBR, mbr_t* seqOMBR, coord_t *seqMBR2, coord_t* seqOMBR2, int * jPairs){
