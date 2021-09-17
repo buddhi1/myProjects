@@ -1,0 +1,5 @@
+#!/bin/bash -i
+module -v load mpich/3.1.4
+module -v load geos
+module -v load cuda
+module -v load GCC/4.9.2-binutils-2.25

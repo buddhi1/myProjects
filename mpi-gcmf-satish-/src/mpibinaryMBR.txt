@@ -1,0 +1,269 @@
+Total filesize 11472780960
+floats per process 44815550
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges  Edges 11203888
+11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+ Edges 11203888
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+
+Layer A geoms 193063
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+
+Layer A geoms 193063
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+
+Layer A geoms 193063
+Binary file I/O Index query, 153430
+ Geom-Env-Join Cnt 16987
+Binary file I/O Index query, 32363
+Binary file I/O Index query, 36432
+ Geom-Env-Join Cnt 16356
+ Geom-Env-Join Cnt 15101
+Binary file I/O Index query, 46672
+ Geom-Env-Join Cnt 16008
+Binary file I/O Index query, 103561
+ Geom-Env-Join Cnt 15833
+Binary file I/O Index query, 34660
+Binary file I/O Index query, 34338
+Binary file I/O Index query, 37543
+Binary file I/O Index query, 37524
+Binary file I/O Index query, 33769
+Binary file I/O Index query, 35942
+Binary file I/O Index query, 36861
+Binary file I/O Index query, 118894
+Binary file I/O Index query, 33002
+ Geom-Env-Join Cnt 14778
+Binary file I/O Index query, 63637
+Binary file I/O Index query, 36666
+ Geom-Env-Join Cnt 15947
+ Geom-Env-Join Cnt 16366
+ Geom-Env-Join Cnt 16485
+ Geom-Env-Join Cnt 16167
+ Geom-Env-Join Cnt 16125
+ Geom-Env-Join Cnt 16262
+ Geom-Env-Join Cnt 16814
+ Geom-Env-Join Cnt 15564
+ Geom-Env-Join Cnt 16552
+ Geom-Env-Join Cnt 16277
+Binary file I/O Index query, 33135
+ Geom-Env-Join Cnt 16598
+Binary file I/O Index query, 43953
+Binary file I/O Index query, 33665
+Binary file I/O Index query, 39013
+Binary file I/O Index query, 35988
+Binary file I/O Index query, 34229
+Binary file I/O Index query, 41154
+Binary file I/O Index query, 65924
+Binary file I/O Index query, 156457
+Binary file I/O Index query, 35820
+ Geom-Env-Join Cnt 16447
+Binary file I/O Index query, 68990
+Binary file I/O Index query, 33301
+Binary file I/O Index query, 34593
+ Geom-Env-Join Cnt 16261
+ Geom-Env-Join Cnt 15978
+Binary file I/O Index query, 33967
+ Geom-Env-Join Cnt 17016
+ Geom-Env-Join Cnt 15229
+ Geom-Env-Join Cnt 16037
+ Geom-Env-Join Cnt 16498
+ Geom-Env-Join Cnt 15934
+ Geom-Env-Join Cnt 16532
+ Geom-Env-Join Cnt 16042
+ Geom-Env-Join Cnt 17171
+Binary file I/O Index query, 36827
+ Geom-Env-Join Cnt 15861
+ Geom-Env-Join Cnt 16051
+ Geom-Env-Join Cnt 16083
+Binary file I/O Index query, 36793
+ Geom-Env-Join Cnt 16750
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 8193 RUNNING AT everest.mscs.mu.edu
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Killed (signal 9)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
