@@ -78,7 +78,7 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<GEOSGeo
    int polygonIndex = 0;
    int nonPolygons = 0;
    int numPolygons = 0;
-      
+   cout << "\n\nbefore for" << endl;
    for(list<GEOSGeometry*>::iterator it = geoms->begin() ; it != geoms->end(); ++it) {
    		 GEOSGeometry *geom = *it;
    		 // GEOSGeometryTypeId typeId = geom->getGeometryTypeId();
@@ -146,6 +146,8 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<GEOSGeo
    layer->mbr2 = gpuEnvInLongVector->data();
    
    *debug_param = nonPolygons;
+   cout << "end .." << endl;
+
    //printf("filtered Polygon count %d, Non-Polygon %d argument geom count = %d \n", numPolygons, *debug_param, geoms->size());
    return layer;
  }
@@ -187,41 +189,41 @@ long* CudaJoinInterface :: prefixSum(polygonLayer *layer)
  //   		}							
  // }
  
- // void CudaJoinInterface :: gpuHelperForPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, 
- // 							vector<coord_t> *envVec, vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector)
- // {
- //    Polygon* poly = dynamic_cast<Polygon*>(geom); 
- //   	const LineString *linestring = poly->getExteriorRing();
- //   		 //LineString *linestr = const_cast<LineString*>(linestring);
+ void CudaJoinInterface :: gpuHelperForPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, 
+ 							vector<coord_t> *envVec, vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector)
+ {
+    Polygon* poly = dynamic_cast<Polygon*>(geom); 
+   	const LineString *linestring = poly->getExteriorRing();
+   		 //LineString *linestr = const_cast<LineString*>(linestring);
    		      
- //   	vNumVector->push_back(linestring->getNumPoints());
- //   	// convertToFloats(linestring, verticesVec);
+   	vNumVector->push_back(linestring->getNumPoints());
+   	// convertToFloats(linestring, verticesVec);
    		      
-	// // convertMBRToFloats(poly->getEnvelopeInternal(), envVec);
+	// convertMBRToFloats(poly->getEnvelopeInternal(), envVec);
 	
-	// // convertMBRToLong(poly->getEnvelopeInternal(), gpuEnvInLongVector);
- // }
+	// convertMBRToLong(poly->getEnvelopeInternal(), gpuEnvInLongVector);
+ }
 
-// void CudaJoinInterface :: convertMBRToLong(const Envelope* v, vector<mbr_t> *vertVect)
-// {
-// 	char buffer[50];  
+void CudaJoinInterface :: convertMBRToLong(const Envelope* v, vector<mbr_t> *vertVect)
+{
+	char buffer[50];  
     
-//     snprintf(buffer, sizeof(buffer), "%f", v->getMinX());
-//     vertVect->push_back(CoordToMBR(buffer, 1));
-//     memset(buffer, 0, sizeof(buffer));
+    snprintf(buffer, sizeof(buffer), "%f", v->getMinX());
+    vertVect->push_back(CoordToMBR(buffer, 1));
+    memset(buffer, 0, sizeof(buffer));
 
-//     snprintf(buffer, sizeof(buffer), "%f", v->getMinY());
-//     vertVect->push_back(CoordToMBR(buffer, 1));
-//     memset(buffer, 0, sizeof(buffer));
+    snprintf(buffer, sizeof(buffer), "%f", v->getMinY());
+    vertVect->push_back(CoordToMBR(buffer, 1));
+    memset(buffer, 0, sizeof(buffer));
     
-//     snprintf(buffer, sizeof(buffer), "%f", v->getMaxX());
-//     vertVect->push_back(CoordToMBR(buffer, 1));
-//     memset(buffer, 0, sizeof(buffer));
+    snprintf(buffer, sizeof(buffer), "%f", v->getMaxX());
+    vertVect->push_back(CoordToMBR(buffer, 1));
+    memset(buffer, 0, sizeof(buffer));
 
-//     snprintf(buffer, sizeof(buffer), "%f", v->getMaxY());
-//     vertVect->push_back(CoordToMBR(buffer, 1));
+    snprintf(buffer, sizeof(buffer), "%f", v->getMaxY());
+    vertVect->push_back(CoordToMBR(buffer, 1));
     
-// }
+}
 
 
 // void CudaJoinInterface :: convertMBRToFloats(const Envelope* v, vector<coord_t> *vertVect)

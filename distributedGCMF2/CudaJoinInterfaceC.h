@@ -49,19 +49,19 @@ class CudaJoinInterface
 {
  long* prefixSum(polygonLayer *layer);
  
- // void convertToFloats(const GEOSLineString* vertices, vector<coord_t> *vertVect);
- // void convertMBRToFloats(const GEOSEnvelope* v, vector<coord_t> *vertVect);
- // void convertMBRToLong(const GEOSEnvelope* v, vector<mbr_t> *vertVect);
+ // void convertToFloats(const LineString* vertices, vector<coord_t> *vertVect);
+ // void convertMBRToFloats(const Envelope* v, vector<coord_t> *vertVect);
+ // void convertMBRToLong(const Envelope* v, vector<mbr_t> *vertVect);
  
  void debugCode(int cellId, polygonLayer* layer1Data, polygonLayer* layer2Data);
  
  mbr_t CoordToMBR(char* ct, char type);
  
- // void gpuHelperForPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
-	// 				vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
+ void gpuHelperForPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
+					vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
 
- // void gpuHelperForMultiPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
-	// 				    vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
+ void gpuHelperForMultiPolygon(GEOSGeometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec,
+					    vector<mbr_t> *gpuEnvInLongVector, vector<int> *vNumVector);
  
  public:
  
