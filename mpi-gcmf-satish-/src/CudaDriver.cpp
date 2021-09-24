@@ -47,20 +47,23 @@ using namespace std;
 */
 
 
-int main2(int argc, char **argv) 
+int main(int argc, char **argv) 
 {
-  Config args(argc, argv); 
-  args.initMPI(argc, argv);
-  
-  char hostname[256];
-  gethostname(hostname,255);
-  cout<<hostname<<endl;
-  //cout<<""<<args.getLayer1()->at(2)<<endl;
-  //cout<<""<<args.getLayer2()->at(2)<<endl;
-  return 0;
+    cout << "--====before" << endl;
+    Config args(argc, argv); 
+    cout << "--====after" << endl;
+
+    args.initMPI(argc, argv);
+
+    char hostname[256];
+    gethostname(hostname,255);
+    cout<<hostname<<endl;
+    cout<<"l1 "<<args.getLayer1()->at(2)<<endl;
+    cout<<"l2 "<<args.getLayer2()->at(2)<<endl;
+    return 0;
 }
 
-int main(int argc, char **argv)
+int main2(int argc, char **argv)
 {	
     cout << "--before" << endl;
 
