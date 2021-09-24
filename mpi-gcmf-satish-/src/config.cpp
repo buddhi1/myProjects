@@ -2,6 +2,8 @@
 
 vector<string>* Config :: getFilesFromDir(char *directory)
 {
+    cout << "\n\n ***--before readfile .cpp" << endl;
+
    vector<string> *files = new vector<string>();
    
    DIR *dir;
@@ -23,6 +25,7 @@ vector<string>* Config :: getFilesFromDir(char *directory)
      /* could not open directory */
      return NULL;
    }
+    cout << "\n\n ***--end readfile .cpp" << endl;
    return files;
 }
 
@@ -39,18 +42,17 @@ vector<string>* Config :: getLayer2()
 // Config &args
 int Config :: initMPI(int argc, char **argv)
 {
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &numProcesses);
+      
+  //MPI_Op mbrUnion = SpatialTypes :: createOperatorType();
+  cout<<"Number of arguments "<<argc<<endl;
 
-    MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &numProcesses);
-        
-    //MPI_Op mbrUnion = SpatialTypes :: createOperatorType();
-    cout<<"Number of arguments "<<argc<<endl;
-
-    if (argc < 3) {
-        if (rank == 0) cout<<"Usage: mpirun -np #processes ./mpi_program #partitions directory1 directory2"<<endl;
-        MPI_Finalize();
-        exit(1);
-    }
-    return 0;
+  if (argc < 3) {
+      if (rank == 0) cout<<"Usage: mpirun -np #processes ./mpi_program #partitions directory1 directory2"<<endl;
+      MPI_Finalize();
+      exit(1);
+  }
+  return 0;
 }

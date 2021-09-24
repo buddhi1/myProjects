@@ -17,29 +17,30 @@ class Config
   
   
   public:
-   int rank;
-   int numPartitions;
-   int numProcesses;
-   string log_file;
+    int rank;
+    int numPartitions;
+    int numProcesses;
+    string log_file;
   
   vector<std::string>* getFilesFromDir(char *directory);
   
   Config(int argc, char **argv)
   {
+    cout << "\n\n\n ***--before .h" << endl;
     numPartitions = atoi(argv[1]);
-        
-	layer1 = getFilesFromDir(argv[2]);
-	layer2 = getFilesFromDir(argv[3]);	
-	
-	if(argc == 5)
-	  log_file = argv[4];  //logfile
-	else
-	  log_file = "dummy";  //logfile
+
+    layer1 = getFilesFromDir(argv[2]);
+    layer2 = getFilesFromDir(argv[3]);	
+
+    if(argc == 5)
+      log_file = argv[4];  //logfile
+    else
+      log_file = "dummy";  //logfile
   }
 
   vector<string>* getLayer1();
   vector<string>* getLayer2(); 
-  
+
   int initMPI(int argc, char **argv);
 };
 
