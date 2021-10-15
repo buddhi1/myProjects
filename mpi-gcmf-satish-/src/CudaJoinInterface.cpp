@@ -1,5 +1,29 @@
 #include "cuda/CudaJoinInterface.h"
 
+int CudaJoinInterface :: createReducers2files(list<Geometry*> *geomsLayer1, list<Geometry*> *geomsLayer2)
+{
+  int nonPolygons = 0;
+  int *joinPairs;
+
+  polygonLayer* layer1Data = populateLayerData(geomsLayer1, &nonPolygons);
+  polygonLayer* layer2Data = populateLayerData(geomsLayer2, &nonPolygons);
+
+  try 
+  {
+    ST_Intersect(layer1Data->polNum, layer2Data->polNum, layer1Data->coord, layer2Data->coord, 
+               layer1Data->vNum, layer2Data->vNum, 
+               layer1Data->prefixSum, layer2Data->prefixSum,
+               layer1Data->mbr2, layer2Data->mbr2,
+               layer1Data->mbr, layer2Data->mbr, joinPairs);  
+  }catch(runtime_error &e)
+  {
+      cerr << "GPU Runtime error during ST_Intersect: " << e.what() << endl;
+  }
+
+  return *joinPairs;
+}
+
+
 void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<Geometry*>* > *, map<int,list<Geometry*>* >* >* cellPairMap)
  {
  	 int cellCount = args->numPartitions;
@@ -14,9 +38,15 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<Geometr
      int nonPolygons = 0;
      int *joinPairs;
      //int total = 0;
-     cout << "before loop" << endl;
+     cout << "before loop" << cellCount << " layer1Map size: " << layer1Map->size() << " layer2Map size: " << layer2Map->size() << endl;
      
      for(int cellId = 0; cellId < cellCount; cellId++) {
+        cout<<"Cell "<<cellId<<endl;
+        // These cells get the same error
+        if (cellId==30 || cellId==34 || cellId==40 || cellId==48 || cellId==59)
+        {
+          continue;
+        }
         if(layer1Map->find(cellId) != layer1Map->end() && layer2Map->find(cellId) != layer2Map->end()) {
            cout << "before" << endl;
            //int output = reducer->reduce(cellId, layer1Map->at(cellId), layer2Map->at(cellId)); 
@@ -42,11 +72,14 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<Geometr
   		   // mbr_t* seqMBR, mbr_t* seqOMBR, coord_t *seqMBR2, coord_t* seqOMBR2)
 		   
 		   //ST_Intersect(long, long, float*, float*, int*, int*, long*, long*, long long*, long long*, float*, float*, int*)
+
+		   cout << "layer1 PolNum " << layer1Data->polNum << " layer2 polNum " << layer2Data->polNum << endl;
 		   
-		   
-		   try {
+       cout<<"layer1 "<<*layer1Data->vNum<<endl;
+
+       try {
 		        ST_Intersect(layer1Data->polNum, layer2Data->polNum, layer1Data->coord, layer2Data->coord, 
-		                   layer1Data->vNum, layer2Data->vNum,
+		                   layer1Data->vNum, layer2Data->vNum, 
 		                   layer1Data->prefixSum, layer2Data->prefixSum,
 		                   layer1Data->mbr2, layer2Data->mbr2,
 		                   layer1Data->mbr, layer2Data->mbr, joinPairs);	
@@ -84,22 +117,22 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<Geometr
    for(list<Geometry*>::iterator it = geoms->begin() ; it != geoms->end(); ++it) {
    		 Geometry *geom = *it;
    		 GeometryTypeId typeId = geom->getGeometryTypeId();
-   		 
+   		 // cout<<"typeID "<< typeId<<endl;
    		 switch(typeId)
    		 {
-   		    case GEOS_POLYGON:
+          case GEOS_POLYGON:
    		    {
-              //( Geometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec)
-              gpuHelperForPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, vNumVector);
-   		  	  
+            //( Geometry *geom, vector<coord_t> *verticesVec, vector<coord_t> *envVec)
+            gpuHelperForPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, vNumVector); 
    		      numPolygons++;
+            // cout<<"in switch "<<numPolygons<<endl;
    		    } 
    		    break;
    		    
    		    case GEOS_MULTIPOLYGON:
    		    {
    		       gpuHelperForMultiPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, vNumVector);
-   		 	}
+          }
    		    break;
    		    
    		    case GEOS_GEOMETRYCOLLECTION:
@@ -113,30 +146,28 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<Geometr
    		    	    switch(typeId)
    		    	    {
    		    	  	 	case GEOS_POLYGON:
-   		    			{
-   		  				   gpuHelperForPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, 
-   		  				   						vNumVector);
+   		    			  {
+                    gpuHelperForPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, vNumVector);
 			   		       numPolygons++;
    		    		    } 
    		    		    break;
    		    
-		    		 	case GEOS_MULTIPOLYGON:
-   		    		 	{
-		   		            gpuHelperForMultiPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, 
-		   		            							vNumVector);
-   		 			    }
-   		 			    break;
+		    		 	    case GEOS_MULTIPOLYGON:
+     		    		 	{
+  		   		            gpuHelperForMultiPolygon(geom, runningVector, runningEnvVector, gpuEnvInLongVector, vNumVector);
+     		 			    }
+     		 			    break;
    		 			      
-   		 			    default: nonPolygons++;
+                  default: nonPolygons++;
    		 			      
-   		    	     } // end inner switch
-   		         } //for geom in GEOS_GEOMETRYCOLLECTION
-   		      }
-   		      break;
+                } // end inner switch
+              } //for geom in GEOS_GEOMETRYCOLLECTION
+ 		      }
+ 		      break;
    		    
-   		     default: nonPolygons++;  
-   		 }
-   }
+          default: nonPolygons++;  
+        }
+      }
    
    layer->polNum = vNumVector->size();
    layer->vNum = vNumVector->data();      //&vNumVector[0];
@@ -150,7 +181,7 @@ void CudaJoinInterface :: createReducers(Config *args, pair<map<int,list<Geometr
    *debug_param = nonPolygons;
    //printf("filtered Polygon count %d, Non-Polygon %d argument geom count = %d \n", numPolygons, *debug_param, geoms->size());
    return layer;
- }
+  }
 
 long* CudaJoinInterface :: prefixSum(polygonLayer *layer)
 {

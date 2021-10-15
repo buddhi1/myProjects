@@ -67,6 +67,7 @@ class CudaJoinInterface
  polygonLayer* populateLayerData(list<Geometry*>* layer, int* debug_param);
  
  void createReducers(Config *args, pair<map<int,list<Geometry*>* > *, map<int,list<Geometry*>* >* >* cellPairMap);
+ int createReducers2files(list<Geometry*> *geomsLayer1, list<Geometry*> *geomsLayer2);
  
  void SpatialJoin(polygonLayer *layer1, polygonLayer *layer2);
  // void SpatialJoin(int* bPolNum, int* oPolNum, int* bVNum, int* oVNum, coord_t* bCoord, 

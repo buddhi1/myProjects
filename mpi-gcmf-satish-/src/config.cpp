@@ -2,7 +2,7 @@
 
 vector<string>* Config :: getFilesFromDir(char *directory)
 {
-    cout << "\n\n ***--before readfile .cpp" << endl;
+    cout << "partition directories - before" << endl;
 
    vector<string> *files = new vector<string>();
    
@@ -14,7 +14,7 @@ vector<string>* Config :: getFilesFromDir(char *directory)
      /* print all the files and directories within directory */
      while ((ent = readdir (dir)) != NULL) 
      {
-       //printf ("%s\n", ent->d_name);
+       // printf ("%s\n", ent->d_name);
        string path = string(directory) + "/" + string(ent->d_name);
        files->push_back(path);
      }
@@ -23,9 +23,10 @@ vector<string>* Config :: getFilesFromDir(char *directory)
    else
    {
      /* could not open directory */
+    cerr << "+++++++===== partition directories - cannot open directory +++++========" << endl;
      return NULL;
    }
-    cout << "\n\n ***--end readfile .cpp" << endl;
+    cout << "partition directories - end\n" << endl;
    return files;
 }
 

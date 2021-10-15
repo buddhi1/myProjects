@@ -5,34 +5,38 @@ Geometry* PointNodeParser :: parseString(const pair<int, string*> &p)
   return NULL;
 }
 
+// buddhi comment
+// ------------------------------------------------
 // nodeId, longitude, latitude, tags
-list<Geometry*>* PointNodeParser :: parse(const FileSplits &split) 
-{
-  list<Geometry*> *geoms = new list<Geometry*>();
+// list<Geometry*>* PointNodeParser :: parse(const FileSplits &split) 
+// {
+//   list<Geometry*> *geoms = new list<Geometry*>();
   
-  list<string>::const_iterator i;
+//   list<string>::const_iterator i;
 
-  list<string> *contents = split.getContents();
+//   list<string> *contents = split.getContents();
   
- //  #ifdef DBUGROAD    
-  int counter  = 0;
-//   #endif
+//  //  #ifdef DBUGROAD    
+//   int counter  = 0;
+// //   #endif
   
-  for(i = contents->begin(); i!= contents->end(); i++) {
-      Geometry *geom = extract(*i);
+//   for(i = contents->begin(); i!= contents->end(); i++) {
+//       Geometry *geom = extract(*i);
 
-      //#ifdef DBUGROAD    
-      //counter++;
+//       //#ifdef DBUGROAD    
+//       //counter++;
       
-      //cout<<counter<<" ";
-      //#endif
+//       //cout<<counter<<" ";
+//       //#endif
       
-      if(geom != NULL)
-        geoms->push_back(geom);
-  }
+//       if(geom != NULL)
+//         geoms->push_back(geom);
+//   }
   
-  return geoms;
-}
+//   return geoms;
+// }
+// ------------------------------------------------
+
 
 /*
 Geometry* PointNodeParser :: extract1(const string &str) 
@@ -63,54 +67,58 @@ Geometry* PointNodeParser :: extract1(const string &str)
 }
 */
 
-Geometry* PointNodeParser :: extract(const string &str) 
-{ 
-	char *cstr = new char[str.length()+1];
+
+// buddhi comment
+// ------------------------------------------------
+// Geometry* PointNodeParser :: extract(const string &str) 
+// { 
+// 	char *cstr = new char[str.length()+1];
 	  
-    std::strcpy (cstr, str.c_str());
-    vector<string*> tokens;
-    // cstr now contains a c-string copy of str
+//     std::strcpy (cstr, str.c_str());
+//     vector<string*> tokens;
+//     // cstr now contains a c-string copy of str
 
-    char *p = std::strtok (cstr,"\t");
+//     char *p = std::strtok (cstr,"\t");
     
-    while (p!=0)
-    {
-      //std::cout << p << '\n';
-      string *token = new string(p);
-      tokens.push_back(token);
+//     while (p!=0)
+//     {
+//       //std::cout << p << '\n';
+//       string *token = new string(p);
+//       tokens.push_back(token);
       
-      p = std::strtok(NULL,"\t");
-    }
-    //cout<<tokens[0]<<"  ";
+//       p = std::strtok(NULL,"\t");
+//     }
+//     //cout<<tokens[0]<<"  ";
     
-    if(tokens.size() >3) {
-       try {
-          long nodeId = std::stol(*tokens[0]);
-          double start_longitude = std::stof(*tokens[1]);
-    	  double start_latitude = std::stof(*tokens[2]);
+//     if(tokens.size() >3) {
+//        try {
+//           long nodeId = std::stol(*tokens[0]);
+//           double start_longitude = std::stof(*tokens[1]);
+//     	  double start_latitude = std::stof(*tokens[2]);
           
-          Coordinate cord(start_longitude, start_latitude);
+//           Coordinate cord(start_longitude, start_latitude);
           
-          Point *pt = factory.createPoint(cord);
+//           Point *pt = factory.createPoint(cord);
     	  
-          //string *tag = tokens.at(3);
+//           //string *tag = tokens.at(3);
 
-          // pointNode *pNode = new pointNode(tag, nodeId);             
-//           pt->setUserData(pNode);
+//           // pointNode *pNode = new pointNode(tag, nodeId);             
+// //           pt->setUserData(pNode);
           
-          return pt;
-      } 
-      catch(exception &e)
-      {
-         cout<< e.what() <<endl;
-         delete[] cstr;
-         //cout<<p.second<<endl;
-         //cout<<geom->toString()<<endl;
-         return NULL;
-      }
-    }
-    delete[] cstr;
-}
+//           return pt;
+//       } 
+//       catch(exception &e)
+//       {
+//          cout<< e.what() <<endl;
+//          delete[] cstr;
+//          //cout<<p.second<<endl;
+//          //cout<<geom->toString()<<endl;
+//          return NULL;
+//       }
+//     }
+//     delete[] cstr;
+// }
+// ------------------------------------------------
 
 
 // node_id	longitude	latitude	tags

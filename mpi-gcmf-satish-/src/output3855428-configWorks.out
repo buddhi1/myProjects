@@ -1,0 +1,26 @@
+--====before
+
+
+
+ ***--config.h constructor start
+
+
+ ***--before readfile .cpp
+
+
+ ***--end readfile .cpp
+
+
+ ***--before readfile .cpp
+
+
+ ***--end readfile .cpp
+
+
+
+ ***--config.h constructor end
+--====after
+Number of arguments 4
+v001.ib.bridges2.psc.edu
+l1 ../../data/testData//11
+l2 ../../data/testData//11

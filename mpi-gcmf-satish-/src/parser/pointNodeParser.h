@@ -24,7 +24,7 @@ struct pointNode
 
 class PointNodeParser
 {
-  geos::geom::GeometryFactory factory;
+  // geos::geom::GeometryFactory factory;
   
   Geometry* parseString( const pair<int, string*> &p);
   //pair<int, string*> extract(const string &string);

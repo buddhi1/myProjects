@@ -122,7 +122,7 @@ Envelope SpatialTypes :: reduceByUnion(Envelope *env) {
   MPI_Type_contiguous(4, MPI_DOUBLE, &mbrtype);
   MPI_Type_commit(&mbrtype);
   
-  // MPI_Op_create(mbrUnion, 0, &boxUnion); ********** comment Buddhi
+  // MPI_Op_create(mbrUnion, 0, &boxUnion); //********** comment Buddhi
   
   //MPI_Reduce(env, &recv, 1, mbrtype, boxUnion, 0, MPI_COMM_WORLD);
   // int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count,

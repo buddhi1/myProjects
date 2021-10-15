@@ -35,7 +35,7 @@
 #include "cuda/CudaJoinInterface.h"
 
 //#define DBUG2 2
-//#define DBUG1 1
+// #define DBUG1 1
 
 using namespace std;
 
@@ -47,7 +47,7 @@ using namespace std;
 */
 
 
-int main(int argc, char **argv) 
+int main2(int argc, char **argv) 
 {
     cout << "--====before" << endl;
     Config args(argc, argv); 
@@ -63,11 +63,12 @@ int main(int argc, char **argv)
     return 0;
 }
 
-int main2(int argc, char **argv)
+int main(int argc, char **argv)
 {	
-    cout << "--before" << endl;
-
+    cout << "before config" << endl;
     Config args(argc, argv); 
+    cout << "after config\n" << endl;
+
     
     args.initMPI(argc, argv);
 
@@ -85,12 +86,12 @@ int main2(int argc, char **argv)
 	//std::ofstream ofs;
     //ofs.open (filename, std::ofstream::out | std::ofstream::app);
 	//#endif
-   cout << "**before" << endl;
 	
 	FilePartitioner *partitioner = new MPI_File_Partitioner();
+    cout << "File partitioner done" << endl;
 
 	partitioner->initialize(args);
-	cout<<"init done"<<endl;
+	cout<<"Init done"<<endl;
     
     pair<FileSplits*, FileSplits*> splitPair = partitioner->partition();
     
@@ -101,6 +102,7 @@ int main2(int argc, char **argv)
     long numLines = splitPair.first->numLines();
     long totalLines = 0;
  
+    cout<<"layer1 numLines: "<<splitPair.first->numLines()<<" layer2 numLines: "<<splitPair.second->numLines()<<endl;
     #ifdef DBUG1   
     //MPI_Reduce(void* send_data, void* recv_data, int count, MPI_Datatype datatype, MPI_Op op, int root, MPI_Comm communicator)
     MPI_Reduce(&numLines, &totalLines, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
@@ -109,15 +111,29 @@ int main2(int argc, char **argv)
        cerr<<"total number of lines "<<totalLines<<endl;
     #endif    
     
+
     //Parser *parser = new RoadNetworkParser();
     Parser *parser = new WKTParser();
+
+    cout<<"WKTParser done"<<endl;
+
+    // comment - Buddhi start
+    // ------------------------------------------------------
+    // list<Geometry*> *layer1Geoms = parser->parse(*splitPair.first);
+    // cout<<"P"<<args.rank<<" "<<hostname<<", geoms 1, "<<layer1Geoms->size()<<endl;
     
-    list<Geometry*> *layer1Geoms = parser->parse(*splitPair.first);
-    cerr<<"P"<<args.rank<<" "<<hostname<<", geoms 1, "<<layer1Geoms->size()<<endl;
+    // list<Geometry*> *layer2Geoms = parser->parse(*splitPair.second);
+    // cout<<"P"<<args.rank<<" "<<hostname<<", geoms 2, "<<layer2Geoms->size()<<endl;
+    // ------------------------------------------------------
+    // comment - Buddhi end
+
+    list<Geometry*> *layer1Geoms = parser->parseGeoms(*splitPair.first);
+    cout<<"P"<<args.rank<<" "<<hostname<<", geoms 1, "<<layer1Geoms->size()<<endl;
     
-    list<Geometry*> *layer2Geoms = parser->parse(*splitPair.second);
-    cerr<<"P"<<args.rank<<" "<<hostname<<", geoms 2, "<<layer2Geoms->size()<<endl;
-    
+    list<Geometry*> *layer2Geoms = parser->parseGeoms(*splitPair.second);
+    cout<<"P"<<args.rank<<" "<<hostname<<", geoms 2, "<<layer2Geoms->size()<<endl;
+
+
     #ifdef DBUG1  
     long numGeoms = layer2Geoms->size();
     long totalGeoms = 0;
@@ -125,10 +141,12 @@ int main2(int argc, char **argv)
     MPI_Reduce(&numGeoms, &totalGeoms, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
     
     if(args.rank == 0)
-       cerr<<"total number of Geoms layer 2 "<<totalGeoms<<endl; 
+       cout<<"total number of Geoms layer 2 "<<totalGeoms<<endl; 
     #endif
     
     Envelope mbr = GeometryUtility :: getMBR( layer1Geoms );
+
+    cout<<"GeometryUtility :: getMBR done"<<endl;
     
     #ifdef DBUG2 
     //cerr<<args.rank<<", "<<mbr.toString();
@@ -142,14 +160,17 @@ int main2(int argc, char **argv)
     
     SpatialTypes types;
   
-    Envelope universe = types.reduceByUnion(&mbr);
-   // cout<<"*****************************"<<endl;
+    Envelope universe = types.reduceByUnion(&mbr); //need to rewrite using OpenMP or multi threading
+   cout<<"*** types.reduceByUnion"<<endl;
    
     if(args.rank == 0)
        printf("Universe: %d, (%f %f), (%f %f) \n",0, universe.getMinX(), universe.getMinY(), universe.getMaxX() , universe.getMaxY());
     
     
     Grid *uniGrid = new UniformGrid(args.numPartitions, &universe);
+    
+    cout<<"*** UniformGrid"<<endl;
+
     
 //     if(args.rank == 0) {
 //       cout<<"Number of cells in the grid "<<uniGrid->size()<<endl;
@@ -180,24 +201,32 @@ int main2(int argc, char **argv)
     
     MappingStrategy *strategy = new RoundRobinStrategy(args.numPartitions, args.numProcesses);
     
+    cout<<"strategy ready"<< endl;
     map<int, Envelope*> *grid = uniGrid->getGridCellsMap();
+    cout<<"grid ready"<< endl;
     
     strategy->createCellProcessMap(grid);
+    cout<<"strategy created process map"<< endl;
+
     
 //     if(args.rank == 0) {
 //       strategy->printStrategy();
 //     }
     
     //map<int, vector<int>* > *mapping = strategy->getProcessToCellsMap();
-    BufferManagerForGeoms geomsBuffMgr(strategy, uniGrid, &args);
+    BufferManagerForGeoms geomsBuffMgr(strategy, uniGrid, &args); //MPI used here ******
+    cout<<"geomsBuffMgr done"<< endl;
     
     pair<map<int, list<Geometry*>* > *, map<int, list<Geometry*>* > * >*geomMapPair = 
   															geomsBuffMgr.shuffleExchangeGrpByCell();
     cerr<<"Shuffle-Exchange"<<endl;  															
-
+    cout<<"geomMapPair done"<< endl;
+    
     CudaJoinInterface cudaInterface;															
    
     cudaInterface.createReducers(&args, geomMapPair);
+
+    cout<<"createReducers done"<< endl;
    
     t2 = MPI_Wtime();
    

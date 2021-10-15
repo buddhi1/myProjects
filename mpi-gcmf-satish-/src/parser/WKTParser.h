@@ -29,6 +29,7 @@ class WKTParser : public Parser
   pair<int, string*> extract(const string &string);
   
   Geometry* parseString( const pair<int, string*> &p);
+  Geometry* parseString2(string str);
   
   list<Geometry*>* parse(const FileSplits &split);
   

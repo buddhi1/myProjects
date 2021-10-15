@@ -1,0 +1,90 @@
++ module addinit openmpi/4.0.5-nvhpc21.2 cuda/11.1.1
+++ /usr/share/lmod/lmod/libexec/lmod bash addinit openmpi/4.0.5-nvhpc21.2 cuda/11.1.1
++ eval 'CC=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvc;' export 'CC;' '__LMOD_REF_COUNT_CMAKE_PREFIX_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh:1;' export '__LMOD_REF_COUNT_CMAKE_PREFIX_PATH;' 'CMAKE_PREFIX_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh;' export 'CMAKE_PREFIX_PATH;' '__LMOD_REF_COUNT_CPATH=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/include:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/include:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/include:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/include:1;' export '__LMOD_REF_COUNT_CPATH;' 'CPATH=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/include:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/include:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/include:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/include;' export 'CPATH;' '__LMOD_REF_COUNT_CPLUS_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include:1;' export '__LMOD_REF_COUNT_CPLUS_INCLUDE_PATH;' 'CPLUS_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include;' export 'CPLUS_INCLUDE_PATH;' 'CPP=cpp;' export 'CPP;' 'CUDA_HOME=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh;' export 'CUDA_HOME;' 'CXX=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvc++;' export 'CXX;' '__LMOD_REF_COUNT_C_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include:1;' export '__LMOD_REF_COUNT_C_INCLUDE_PATH;' 'C_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include;' export 'C_INCLUDE_PATH;' 'DEFCUDAVERSION=11.2;' export 'DEFCUDAVERSION;' 'F77=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvfortran;' export 'F77;' 'F90=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvfortran;' export 'F90;' 'FC=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvfortran;' export 'FC;' '__LMOD_REF_COUNT_INCLUDE=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include:1;' export '__LMOD_REF_COUNT_INCLUDE;' 'INCLUDE=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include;' export 'INCLUDE;' '__LMOD_REF_COUNT_LD_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/lib:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/lib:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/lib:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/lib64:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/lib:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/extras/CUPTI/lib64:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/lib64:1;' export '__LMOD_REF_COUNT_LD_LIBRARY_PATH;' 'LD_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/lib64:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/extras/CUPTI/lib64:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/lib64;' export 'LD_LIBRARY_PATH;' '__LMOD_REF_COUNT_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64:1;' export '__LMOD_REF_COUNT_LIBRARY_PATH;' 'LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64;' export 'LIBRARY_PATH;' '__LMOD_REF_COUNT_LOADEDMODULES=allocations/1.0:1\;openmpi/4.0.5-nvhpc21.2:1\;cuda/11.1.1:1;' export '__LMOD_REF_COUNT_LOADEDMODULES;' 'LOADEDMODULES=allocations/1.0:openmpi/4.0.5-nvhpc21.2:cuda/11.1.1;' export 'LOADEDMODULES;' '__LMOD_REF_COUNT_MANPATH=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/man:1\;/usr/share/lmod/lmod/share/man:1\;/opt/puppetlabs/puppet/share/man:1;' export '__LMOD_REF_COUNT_MANPATH;' 'MANPATH=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/man:/usr/share/lmod/lmod/share/man::/opt/puppetlabs/puppet/share/man;' export 'MANPATH;' 'MODULEPATH=/opt/modulefiles:/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core;' export 'MODULEPATH;' 'NVHPC=/opt/packages/pgi/21.2-cuda11.1;' export 'NVHPC;' 'OMPI_MCA_btl_openib_warn_no_device_params_found=0;' export 'OMPI_MCA_btl_openib_warn_no_device_params_found;' 'OMPI_MCA_pml=\^ucx;' export 'OMPI_MCA_pml;' 'OPAL_PREFIX=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi;' export 'OPAL_PREFIX;' '__LMOD_REF_COUNT_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/bin:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/bin:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin:1\;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/bin:1\;/jet/home/bxm055/.local/bin:1\;/jet/home/bxm055/bin:1\;/opt/packages/allocations/bin:1\;/usr/local/bin:1\;/usr/bin:1\;/usr/local/sbin:1\;/usr/sbin:1\;/bin:1\;/opt/packages/interact/bin:1\;/opt/puppetlabs/bin:1;' export '__LMOD_REF_COUNT_PATH;' 'PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/bin:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/bin:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/bin:/jet/home/bxm055/.local/bin:/jet/home/bxm055/bin:/opt/packages/allocations/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/opt/packages/interact/bin:/opt/puppetlabs/bin;' export 'PATH;' 'SLURM_WHOLE=1;' export 'SLURM_WHOLE;' '__LMOD_REF_COUNT__LMFILES_=/opt/modulefiles/allocations/1.0.lua:1\;/opt/modulefiles/openmpi/4.0.5-nvhpc21.2:1\;/opt/modulefiles/cuda/11.1.1.lua:1;' export '__LMOD_REF_COUNT__LMFILES_;' '_LMFILES_=/opt/modulefiles/allocations/1.0.lua:/opt/modulefiles/openmpi/4.0.5-nvhpc21.2:/opt/modulefiles/cuda/11.1.1.lua;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXthbGxvY2F0aW9ucz17WyJmbiJdPSIvb3B0L21vZHVsZWZpbGVzL2FsbG9jYXRpb25zLzEuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYWxsb2NhdGlvbnMvMS4wIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYWxsb2NhdGlvbnMiLH0sY3VkYT17WyJmbiJdPSIvb3B0L21vZHVsZWZpbGVzL2N1ZGEvMTEuMS4xLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjEuMSIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsi;' export '_ModuleTable001_;' '_ModuleTable002_=c3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEvMTEuMS4xIix9LG9wZW5tcGk9e1siZm4iXT0iL29wdC9tb2R1bGVmaWxlcy9vcGVubXBpLzQuMC41LW52aHBjMjEuMiIsWyJmdWxsTmFtZSJdPSJvcGVubXBpLzQuMC41LW52aHBjMjEuMiIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Im9wZW5tcGkvNC4wLjUtbnZocGMyMS4yIix9LH0sbXBhdGhBPXsiL29wdC9tb2R1bGVmaWxlcyIsIi9ldGMvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9k;' export '_ModuleTable002_;' '_ModuleTable003_=dWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9tb2R1bGVmaWxlczovZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfQ==;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ CC=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvc
+++ export CC
+++ __LMOD_REF_COUNT_CMAKE_PREFIX_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh:1
+++ export __LMOD_REF_COUNT_CMAKE_PREFIX_PATH
+++ CMAKE_PREFIX_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh
+++ export CMAKE_PREFIX_PATH
+++ __LMOD_REF_COUNT_CPATH='/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/include:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/include:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/include:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/include:1'
+++ export __LMOD_REF_COUNT_CPATH
+++ CPATH=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/include:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/include:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/include:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/include
+++ export CPATH
+++ __LMOD_REF_COUNT_CPLUS_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include:1
+++ export __LMOD_REF_COUNT_CPLUS_INCLUDE_PATH
+++ CPLUS_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include
+++ export CPLUS_INCLUDE_PATH
+++ CPP=cpp
+++ export CPP
+++ CUDA_HOME=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh
+++ export CUDA_HOME
+++ CXX=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvc++
+++ export CXX
+++ __LMOD_REF_COUNT_C_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include:1
+++ export __LMOD_REF_COUNT_C_INCLUDE_PATH
+++ C_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include
+++ export C_INCLUDE_PATH
+++ DEFCUDAVERSION=11.2
+++ export DEFCUDAVERSION
+++ F77=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvfortran
+++ export F77
+++ F90=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvfortran
+++ export F90
+++ FC=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin/nvfortran
+++ export FC
+++ __LMOD_REF_COUNT_INCLUDE=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include:1
+++ export __LMOD_REF_COUNT_INCLUDE
+++ INCLUDE=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/include
+++ export INCLUDE
+++ __LMOD_REF_COUNT_LD_LIBRARY_PATH='/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/lib:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/lib:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/lib:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/lib64:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/lib:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/extras/CUPTI/lib64:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/lib64:1'
+++ export __LMOD_REF_COUNT_LD_LIBRARY_PATH
+++ LD_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nvshmem/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/nccl/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/math_libs/lib64:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/lib:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/extras/CUPTI/lib64:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/lib64
+++ export LD_LIBRARY_PATH
+++ __LMOD_REF_COUNT_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64:1
+++ export __LMOD_REF_COUNT_LIBRARY_PATH
+++ LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/lib64
+++ export LIBRARY_PATH
+++ __LMOD_REF_COUNT_LOADEDMODULES='allocations/1.0:1;openmpi/4.0.5-nvhpc21.2:1;cuda/11.1.1:1'
+++ export __LMOD_REF_COUNT_LOADEDMODULES
+++ LOADEDMODULES=allocations/1.0:openmpi/4.0.5-nvhpc21.2:cuda/11.1.1
+++ export LOADEDMODULES
+++ __LMOD_REF_COUNT_MANPATH='/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/man:1;/usr/share/lmod/lmod/share/man:1;/opt/puppetlabs/puppet/share/man:1'
+++ export __LMOD_REF_COUNT_MANPATH
+++ MANPATH=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/man:/usr/share/lmod/lmod/share/man::/opt/puppetlabs/puppet/share/man
+++ export MANPATH
+++ MODULEPATH=/opt/modulefiles:/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+++ export MODULEPATH
+++ NVHPC=/opt/packages/pgi/21.2-cuda11.1
+++ export NVHPC
+++ OMPI_MCA_btl_openib_warn_no_device_params_found=0
+++ export OMPI_MCA_btl_openib_warn_no_device_params_found
+++ OMPI_MCA_pml='^ucx'
+++ export OMPI_MCA_pml
+++ OPAL_PREFIX=/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi
+++ export OPAL_PREFIX
+++ __LMOD_REF_COUNT_PATH='/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/bin:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/bin:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin:1;/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/bin:1;/jet/home/bxm055/.local/bin:1;/jet/home/bxm055/bin:1;/opt/packages/allocations/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/bin:1;/opt/packages/interact/bin:1;/opt/puppetlabs/bin:1'
+++ export __LMOD_REF_COUNT_PATH
+++ PATH=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/cuda-11.1.1-a6ajxenobex5bvpejykhtnfut4arfpwh/bin:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/comm_libs/mpi/bin:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/compilers/bin:/opt/packages/pgi/21.2-cuda11.1/Linux_x86_64/21.2/cuda/bin:/jet/home/bxm055/.local/bin:/jet/home/bxm055/bin:/opt/packages/allocations/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/opt/packages/interact/bin:/opt/puppetlabs/bin
+++ export PATH
+++ SLURM_WHOLE=1
+++ export SLURM_WHOLE
+++ __LMOD_REF_COUNT__LMFILES_='/opt/modulefiles/allocations/1.0.lua:1;/opt/modulefiles/openmpi/4.0.5-nvhpc21.2:1;/opt/modulefiles/cuda/11.1.1.lua:1'
+++ export __LMOD_REF_COUNT__LMFILES_
+++ _LMFILES_=/opt/modulefiles/allocations/1.0.lua:/opt/modulefiles/openmpi/4.0.5-nvhpc21.2:/opt/modulefiles/cuda/11.1.1.lua
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXt9LG1UPXthbGxvY2F0aW9ucz17WyJmbiJdPSIvb3B0L21vZHVsZWZpbGVzL2FsbG9jYXRpb25zLzEuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYWxsb2NhdGlvbnMvMS4wIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYWxsb2NhdGlvbnMiLH0sY3VkYT17WyJmbiJdPSIvb3B0L21vZHVsZWZpbGVzL2N1ZGEvMTEuMS4xLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjEuMSIsWyJsb2FkT3JkZXIiXT0zLHByb3BUPXt9LFsi
+++ export _ModuleTable001_
+++ _ModuleTable002_=c3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEvMTEuMS4xIix9LG9wZW5tcGk9e1siZm4iXT0iL29wdC9tb2R1bGVmaWxlcy9vcGVubXBpLzQuMC41LW52aHBjMjEuMiIsWyJmdWxsTmFtZSJdPSJvcGVubXBpLzQuMC41LW52aHBjMjEuMiIsWyJsb2FkT3JkZXIiXT0yLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09Im9wZW5tcGkvNC4wLjUtbnZocGMyMS4yIix9LH0sbXBhdGhBPXsiL29wdC9tb2R1bGVmaWxlcyIsIi9ldGMvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eCIsIi91c3Ivc2hhcmUvbW9k
+++ export _ModuleTable002_
+++ _ModuleTable003_=dWxlZmlsZXMvQ29yZSIsIi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmUiLH0sWyJzeXN0ZW1CYXNlTVBBVEgiXT0iL29wdC9tb2R1bGVmaWxlczovZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfQ==
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ ret=0
++ /usr/share/lmod/8.2.7/libexec/log_modules addinit openmpi/4.0.5-nvhpc21.2 cuda/11.1.1
++ return 0
++ mpirun -np 1 ./gpu 64 ../../data/64Parts ../../data/64Parts
+Shuffle-Exchange

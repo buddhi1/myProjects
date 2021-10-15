@@ -2,8 +2,8 @@ GCC = g++
 CC = mpicxx
 #LIBB = -L/usr/local/Cellar/geos/3.5.0/lib 
 #LIBB = -L/sw/geosoft/geos/lib -lgeos
-LIBB = -L/usr/lib64 -lgeos
-# LIBB = -L ~/myLibs/geos/lib/ -lgeos
+LIBB = -L/usr/lib64 -lgeos  
+# LIBB = -L ~/myLibs/geos/lib/ -lgeos   
 
 
 # for Bridges2
@@ -46,6 +46,10 @@ mpicuda: CudaDriver.o ST_Intersect.o CudaJoinInterface.o CollectiveAttributes.o 
 #ST_Intersect.o: ST_Intersect.cu
 #	nvcc -w -dc -arch=sm_35 ST_Intersect.cu
 #    nvcc -w -rdc=true -arch=sm_35 -o ST_Intersect
+
+refineMC: MPILoadBalancer.o ST_Intersect.o CudaJoinInterface.o dynamicMPILoadCalculator.o staticMPILoadCalculator.o fileWriter.o GeomPrintReducer.o pointNodeParser.o fileRead.o GeomJoinReducer.o uniformGrid.o bufferManagerMBR.o spatialTypes.o util.o ShapeFilePartitioner.o road_network_parser.o overlay.o join.o index.o MPI_File_Partitioner.o WKTParser.o FileSplits.o config.o roundRobinStrategy.o
+	$(CC) -O0 $(DEBUG) $(LFLAGS) -o refineMC MPILoadBalancer.o ST_Intersect.o CudaJoinInterface.o dynamicMPILoadCalculator.o staticMPILoadCalculator.o fileWriter.o pointNodeParser.o GeomPrintReducer.o  fileRead.o GeomJoinReducer.o uniformGrid.o bufferManagerMBR.o spatialTypes.o util.o road_network_parser.o overlay.o join.o index.o MPI_File_Partitioner.o WKTParser.o FileSplits.o config.o roundRobinStrategy.o $(LIBB) $(LIBRA) $(LIBCUDA) -lcudart
+
 
 refineLB: MPILoadBalancer.o dynamicMPILoadCalculator.o staticMPILoadCalculator.o fileWriter.o GeomPrintReducer.o pointNodeParser.o fileRead.o GeomJoinReducer.o uniformGrid.o bufferManagerMBR.o spatialTypes.o util.o ShapeFilePartitioner.o road_network_parser.o overlay.o join.o index.o MPI_File_Partitioner.o WKTParser.o FileSplits.o config.o roundRobinStrategy.o
 	$(CC) -O0 $(DEBUG) $(LFLAGS) -o refineLB MPILoadBalancer.o dynamicMPILoadCalculator.o staticMPILoadCalculator.o fileWriter.o pointNodeParser.o GeomPrintReducer.o  fileRead.o GeomJoinReducer.o uniformGrid.o bufferManagerMBR.o spatialTypes.o util.o road_network_parser.o overlay.o join.o index.o MPI_File_Partitioner.o WKTParser.o FileSplits.o config.o roundRobinStrategy.o $(LIBB)
@@ -100,7 +104,8 @@ sequentialIO.o: sequentialIO.cpp
 #	nvcc -w -m64 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_35,code=sm_35 -o ST_Intersect.o -c -w ST_Intersect.cu	
 
 ST_Intersect.o: ST_Intersect.cu
-	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c ST_Intersect.cu	
+# 	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c ST_Intersect.cu	
+	nvcc -w -m64 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c ST_Intersect.cu	
 
 
 CudaDriver.o: CudaDriver.cpp
@@ -203,5 +208,5 @@ fileRead.o: fileRead.cpp
 	$(CC) $(CFLAGS) fileRead.cpp
 	
 clean:
-	rm *.o gpu
+	rm *.o gpu refineLB refineMC
  

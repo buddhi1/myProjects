@@ -18,7 +18,7 @@
 int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overlayCoords, int* bVNum, int* oVNum, long *bVPSNum, long *oVPSNum, 
                  mbr_t* seqMBR, mbr_t* seqOMBR, coord_t *seqMBR2, coord_t* seqOMBR2, int * jPairs){
 
-    printf("In ST_Intersect \n");
+    printf("In ST_Intersect\n");
     fflush(stdout);
     
     long bVNumSum=bVPSNum[bPolNum-1], oVNumSum=oVPSNum[oPolNum-1];
@@ -95,7 +95,7 @@ int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overl
     StartTimer(&start_GPU, &stop_GPU);
     int *djxy2IndexList, *djPiPIndexList;
     char* dPiPType, *dPiPFlag, *djoinFlag;
-    long eiNum, pairNum3, *pipNum, workLoadNum;
+    long eiNum, pairNum3, /* *pipNum */ pipNum, workLoadNum;
     coord_t *dcMBR, *dbMBR2, *doMBR2;
     CopyToGPU((void**)&doMBR2, seqOMBR2, sizeof(coord_t)*oPolNum*4, "doMBR2", 1);
     CopyToGPU((void**)&dbMBR2, seqMBR2, sizeof(coord_t)*bPolNum*4, "dbMBR2", 1);
@@ -112,11 +112,11 @@ int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overl
 //--------------------------- Point in Polygon Test operation --------------------------
     StartTimer(&start_GPU, &stop_GPU);
     long wNum;
-
-
-    wNum=PointInPolygonTest(bCoords, oCoords, pairNum, *pipNum, djxyVector, djPiPIndexList, dPiPType, dbVPSNum, doVPSNum, dPiPFlag, djoinFlag);
     
-    if(DEBUG_MODE)printf("\n\tNumber of within pairs: %ld\n", wNum);
+    // wNum=PointInPolygonTest(bCoords, oCoords, pairNum, *pipNum, djxyVector, djPiPIndexList, dPiPType, dbVPSNum, doVPSNum, dPiPFlag, djoinFlag);
+    wNum=PointInPolygonTest(bCoords, oCoords, pairNum, pipNum, djxyVector, djPiPIndexList, dPiPType, dbVPSNum, doVPSNum, dPiPFlag, djoinFlag);
+
+    if(DEBUG_MODE)printf("\n\tNumber of within pairs:  %ld\n", wNum);
     retVal+=wNum;
 
     //PrintPairs(djxyVector, dPiPFlag, pairNum);
@@ -157,7 +157,7 @@ int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overl
     if(DEBUG_MODE){
       float runningTime_GPU_ACMF;
       Join_Total_Time_GPU+=StopTimer(&start_GPU, &stop_GPU, &runningTime_GPU_ACMF);
-      printf("\nGPU Running Time for Applying Common MBR Filter: %f (%f)\n", runningTime_GPU_ACMF, Join_Total_Time_GPU);
+      printf("\nGPU Running Time for Applying Common MBR Filter : %f (%f)\n", runningTime_GPU_ACMF, Join_Total_Time_GPU);
     }
     cudaFree(dcMBR);
 

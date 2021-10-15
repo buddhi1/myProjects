@@ -26,7 +26,11 @@ using namespace std;
 class Join
 {
   Geometry* convertEnvToGeom(Envelope *env);
-  geos::geom::GeometryFactory factory;
+  // original
+  // geos::geom::GeometryFactory factory;   
+ 
+ // buddhi added
+  // geos::geom::GeometryFactory factory = geos::geom::GeometryFactory::createGeometryCollection();
   
   public:
 

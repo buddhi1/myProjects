@@ -18,8 +18,8 @@ int MPI_File_Partitioner :: initialize(Config &args)
     
     const char *layer2 = args.getLayer2()->at(2).c_str();
      
-    // cout<<"MPI layer1 "<<layer1<<endl; 
-//     cout<<"MPI layer2 "<<layer2<<endl; 
+    cout<<"MPI layer1 "<<layer1<<endl; 
+    cout<<"MPI layer2 "<<layer2<<endl; 
     MPI_Info myinfo;
     MPI_Info_create(&myinfo);
     MPI_Info_set(myinfo, "access_style", "read_once,sequential"); 
@@ -102,7 +102,7 @@ FileSplits* MPI_File_Partitioner :: partitionLayer(MPI_File mpi_layer)
     MPI_File_get_size(mpi_layer, &filesize);
     
     if(rank == 0) {
-      //cerr<<"FileSize "<<filesize<<endl;
+      cout<<"FileSize "<<filesize<<endl;
       //fflush(stdout);
     }
     
@@ -193,6 +193,13 @@ FileSplits* MPI_File_Partitioner :: partitionLayer(MPI_File mpi_layer)
     FileSplits *splits = new FileSplits();
     splits->write(data);
     
+    // print data
+    // cout<<"\n\ndata: ";
+    // for (int ii = 0; ii < localsize+1; ++ii)
+    // {
+    //     cout<<data[ii];
+    // }
+    // cout<<"\n\n"<<endl;
     free(data);
     
     //cout<<"Returning from partionLayer"<<endl;
