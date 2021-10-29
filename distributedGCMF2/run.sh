@@ -15,7 +15,7 @@ module addinit openmpi/4.0.5-nvhpc21.2 cuda/11.1.1
 
 #run pre-compiled MPI program which is already in your project space
 # mpirun -np 2 ./a.out
-mpirun -np 3 ./program
+mpirun -np 3 --oversubscribe ./program
 
 # How to run CPU GPU
 # ------------------------

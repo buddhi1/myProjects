@@ -7,15 +7,20 @@ map<long, int, std::greater<long> >* DynamicMPILoadCalculator :: calculateLoad(i
     MPI_Comm_rank(MPI_COMM_WORLD,  &rank);  
     
     map<int, long>* loadMapByFileID;
+    // map does not allow same key to duplicate with multiple values. There cannot be same number of size 
     map<long, int, std::greater<long> >* loadMapByLoadFactor = new map<long, int, std::greater<long> >();
    
     if(rank == 0) {
        loadMapByFileID = master(numFiles);
        for(int fileId = 0; fileId < numFiles; fileId++)
        {
-           if( loadMapByFileID->find(fileId) != loadMapByFileID->end())
-              loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId), fileId));
+           if( loadMapByFileID->find(fileId) != loadMapByFileID->end()) {
+              loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId), fileId));           		
+           	cout<<loadMapByFileID->at(fileId)<<" "<<fileId<<endl;
+           }
        }
+	cout<<"map size *"<<loadMapByLoadFactor->size()<<endl;
+
     }
     else {
        slave(numFiles, l1Mbr_folder, l2Mbr_folder);
@@ -90,7 +95,7 @@ void DynamicMPILoadCalculator :: slave(int numFiles, string l1Mbr_folder, string
             output = reduce(work, l1Envs, l2Envs);
             filterResult.pairs = output;
             filterResult.fileID = work; 
-           // cout<<l1Count<<" "<<l2Count<<endl;
+           // cout<<l1File<<" "<<l1File<<endl;
         }
         else
         {

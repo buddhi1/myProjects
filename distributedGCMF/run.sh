@@ -4,7 +4,7 @@
 #SBATCH -e output%j.err      # error file name (%j expands to jobID), this file captures standered errors genereted from the program
 #SBATCH -N 3
 #SBATCH -p GPU
-#SBATCH -t 00:01:00
+#SBATCH -t 00:02:00
 #SBATCH --gres gpu:8
 #echo commands to stdout
 set -x

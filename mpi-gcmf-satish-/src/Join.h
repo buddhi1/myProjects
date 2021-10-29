@@ -452,11 +452,11 @@ long PointInPolygonTest(coord_t *bCoords, coord_t* oCoords, long pairNum, long p
     //dim3 bDim_PiP(thPerBlock,1,1);    
     dim3 bDim_PiP(1,1,1);    
     dim3 gDim_PiP(gD_PiP ,gD_PiP ,1);   
-    printf("In ST_Intersect PointInPolygonTest 111 \n");
+    printf("In ST_Intersect PointInPolygonTest ** \n");
 
     Point_In_Polygon_Test<<<gDim_PiP, bDim_PiP>>>(bCoords, oCoords, pipNum, jxyVector, jPiPIndexList, pipType, bVPSNum, oVPSNum, pipFlag, joinFlag);
     GPUSync("ERROR (Point_In_Polygon_Test):");
-    printf("In ST_Intersect PointInPolygonTest 8998 \n");
+    printf("In ST_Intersect PointInPolygonTest -- \n");
 
     long *jNum, *pipPSFlag;
     PrefixSum(pairNum, pipFlag, NULL, &pipPSFlag, NULL, 1, 1);

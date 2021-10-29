@@ -106,7 +106,7 @@ int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overl
     if(DEBUG_MODE){
        float runningTime_GPU_PiPCMF;
        Join_Total_Time_GPU+=StopTimer(&start_GPU, &stop_GPU, &runningTime_GPU_PiPCMF);
-       printf("\nGPU Running Time for CMF Filter for Point in Polygon Test: %f (%f)\n", runningTime_GPU_PiPCMF, Join_Total_Time_GPU);
+       printf("\nGPU Running Time for CMF Filter for Point in Polygon Test:  %f (%f)\n", runningTime_GPU_PiPCMF, Join_Total_Time_GPU);
     }
 //------------------------------------------------------------------------------
 //--------------------------- Point in Polygon Test operation --------------------------
@@ -116,7 +116,7 @@ int ST_Intersect(long bPolNum, long oPolNum, coord_t* baseCoords, coord_t* overl
     // wNum=PointInPolygonTest(bCoords, oCoords, pairNum, *pipNum, djxyVector, djPiPIndexList, dPiPType, dbVPSNum, doVPSNum, dPiPFlag, djoinFlag);
     wNum=PointInPolygonTest(bCoords, oCoords, pairNum, pipNum, djxyVector, djPiPIndexList, dPiPType, dbVPSNum, doVPSNum, dPiPFlag, djoinFlag);
 
-    if(DEBUG_MODE)printf("\n\tNumber of within pairs:  %ld\n", wNum);
+    if(DEBUG_MODE)printf("\n\tNumber of within pairs: %ld\n", wNum);
     retVal+=wNum;
 
     //PrintPairs(djxyVector, dPiPFlag, pairNum);

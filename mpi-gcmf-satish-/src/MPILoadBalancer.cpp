@@ -75,10 +75,18 @@ int LoadBalancer :: masterRefinementScheduler(int nProcs, map<long, int, std::gr
 {
     
 	vector<int> fileNames;
-	
-	for ( const auto &myPair : *loadByCell ) {
-        cout << myPair.second << " -> " << myPair.first << endl;
-        fileNames.push_back(myPair.second);
+	cout<<"map size  "<<loadByCell->size()<<endl;
+	// origianl ----------------- start
+	// for ( const auto &myPair : *loadByCell ) {
+ //        cout << myPair.second << " *-> " << myPair.first << endl;
+ //        fileNames.push_back(myPair.second);
+ //    }
+	// origianl ----------------- end
+
+	// manual push
+	for (int i=0; i < 6; i++) {
+        cout << i << " *-> 115544"  << endl;
+        fileNames.push_back(i);
     }
 /*
 * Seed the slaves.
@@ -218,7 +226,7 @@ int LoadBalancer :: refineOneCell(char *fileLayer1, char *fileLayer2)
         // cout<<"Output Pairs Task "<<fileLayer1<<": "<<pairs->size()<<endl;
         cout<<"refineOneCell "<<fileLayer1<<": "<<geomsLayer1->size()<<", "<<fileLayer2<<": "<<geomsLayer2->size()<<endl;
 
-        if (strcmp(fileLayer1,"../../data/64Parts/50")==0 || strcmp(fileLayer2, "../../data/64Parts/50")==0 || strcmp(fileLayer1,"../../data/64Parts/38")==0 || strcmp(fileLayer2, "../../data/64Parts/38")==0 || strcmp(fileLayer1,"../../data/64Parts/45")==0 || strcmp(fileLayer2, "../../data/64Parts/45")==0)
+        if (strcmp(fileLayer1,"../../data/64Parts/50")==0 || strcmp(fileLayer2, "../../data/64Parts/50")==0 || strcmp(fileLayer1,"../../data/64Parts/38")==0 || strcmp(fileLayer2, "../../data/64Parts/38")==0 || strcmp(fileLayer1,"../../data/64Parts/45")==0 || strcmp(fileLayer2, "../../data/64Parts/45")==0 || strcmp(fileLayer1,"../../data/64Parts/39")==0 || strcmp(fileLayer2, "../../data/64Parts/39")==0 || strcmp(fileLayer1,"../../data/64Parts/35")==0 || strcmp(fileLayer2, "../../data/64Parts/35")==0 || strcmp(fileLayer1,"../../data/64Parts/57")==0 || strcmp(fileLayer2, "../../data/64Parts/57")==0 || strcmp(fileLayer1,"../../data/64Parts/51")==0 || strcmp(fileLayer2, "../../data/64Parts/51")==0 || strcmp(fileLayer1,"../../data/64Parts/44")==0 || strcmp(fileLayer2, "../../data/64Parts/44")==0 || strcmp(fileLayer1,"../../data/64Parts/52")==0 || strcmp(fileLayer2, "../../data/64Parts/52")==0 || strcmp(fileLayer1,"../../data/64Parts/12")==0 || strcmp(fileLayer2, "../../data/64Parts/12")==0)
         {
         	cout<<"Error file"<<endl;
         	return 0;
@@ -347,7 +355,7 @@ map<long, int, std::greater<long>>* LoadBalancer :: distributedLoadCalc(int numF
 {   	
 	//MPILoadCalculator *loadCalculator = new StaticMPILoadCalculator();
 	MPILoadCalculator *loadCalculator = new DynamicMPILoadCalculator();
-	
+	// cout<<numFiles<<"--- "<<endl;
 	map<long, int, std::greater<long> >* loadByCell = loadCalculator->calculateLoad(numFiles, l1MBRFolder, l2MBRFolder);
 	
 	//mpiStaticLoadCalculator(numFiles, l1MBRFolder, l2MBRFolder);
