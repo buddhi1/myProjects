@@ -60,8 +60,11 @@ pair<CollectiveAttributes*, CollectiveAttributes*>* MPI_BufferManager :: getAllT
 
 pair< pair< bbox*, int>* , pair< bbox*, int>* >* MPI_BufferManager :: shuffleExchangeMBR()
 {
+    cout<<"MPI_BufferManager 0"<< endl;
       bbox *l1Envelopes = populateL1SendBuffer4Box(m_attr->first, grid, args->numProcesses);
+    cout<<"MPI_BufferManager 1"<< endl;
       pair< bbox*, int>* myEnvelopesL1 = exchangeEnvelopes(l1Envelopes, m_attr->first);
+    cout<<"MPI_BufferManager 2"<< endl;
       //map<int,vector<GeomInfo*>* > *envelopesByCellId1= parseEnvelopesFromStruct(myEnvelopesL1);            
 
       bbox *l2Envelopes = populateL2SendBuffer4Box(m_attr->second, grid, args->numProcesses);
@@ -118,14 +121,17 @@ map<int,vector<GeomInfo*>* >* MPI_BufferManager :: parseEnvelopesFromStruct(pair
 struct bbox* MPI_BufferManager :: populateL1SendBuffer4Box(CollectiveAttributes *attr, Grid *grid, int numProcesses)
 {
    int numShapes = attr->sendBufSize;
-   //cout<<" # "<<numShapes<<" ";
+   cout<<" # "<<numShapes<<endl;
    
    //struct bbox *envelopes = (struct bbox *)malloc(sizeof(struct bbox) * numShapes);
    struct bbox *l1Envelopes = new struct bbox[numShapes];
    
+   // cout<<"populateL1SendBuffer4Box # 0"<<endl;
    map<int, vector<int>* > *processToCellsMapping = strategy->getProcessToCellsMap();
+   // cout<<"populateL1SendBuffer4Box # 1"<<endl;
    
    map<int, Cell*> *shapeInACell = grid->getShapesInCell();
+   // cout<<"populateL1SendBuffer4Box # 2"<<endl;
    
    // Iterate through processToCellsMapping and add the shapes up using shapeInACell 
    int envCounter = 0;
@@ -135,6 +141,8 @@ struct bbox* MPI_BufferManager :: populateL1SendBuffer4Box(CollectiveAttributes 
        vector<int> *cells = processToCellsMapping->at(pid);
            
        for(int cellId : *cells) {
+          // cout<<"populateL1SendBuffer4Box loop "<<cellId<<endl;
+
           Cell *cell = shapeInACell->at(cellId);
           list<Geometry*> *geoms = cell->getLayerAGeom();
           
@@ -143,7 +151,7 @@ struct bbox* MPI_BufferManager :: populateL1SendBuffer4Box(CollectiveAttributes 
           assert(envCounter <= numShapes);
        }
    }
-   //cout<<" # "<<envCounter<<" ";
+   // cout<<" # "<<envCounter<<" ";
    return l1Envelopes;
 }
 

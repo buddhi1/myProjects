@@ -1,6 +1,8 @@
 #include "loadbalance/MPILoadBalancer.h"
 #include <mpi.h>
 
+#include "cuda/CudaJoinInterface.h"
+
 // #define WORKTAG     1
 // #define DIETAG     2
 
@@ -35,7 +37,8 @@ int main(int argc, char *argv[])
     }
       
 	LoadBalancer lb(argc, argv);
-	
+	cout<<"lb l1: "<<lb.getL1Folder()<<" l2: "<<lb.getL2Folder()<<endl;
+	cout<<"mbrl1: "<<lb.getL1MBRFolder()<<" mbrl2: "<<lb.getL2MBRFolder()<<" numFiles: "<<lb.getNumFiles()<<endl;
 	//char hostname[256];
 	//gethostname(hostname,255);
 	//int numFiles = atoi(argv[1]);
@@ -54,7 +57,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-	    lb.slaveTaskForRefinement();
+	    lb.slaveTaskForRefinement(); // should be MPI slave work. Use GPU spatial join here
 	}
 	//lb.scheduleRefinement();
 
@@ -62,6 +65,7 @@ int main(int argc, char *argv[])
    
     if(myrank == 0)
     	cout<<endl<<"P"<<myrank<<" Load calc. time "<<(lc_t2 - lc_t1)<<" "<<"Total time "<<(total_t2 - total_t1)<<endl<<endl;
+
 
 	MPI_Finalize();  
 	return 0;
@@ -71,10 +75,18 @@ int LoadBalancer :: masterRefinementScheduler(int nProcs, map<long, int, std::gr
 {
     
 	vector<int> fileNames;
-	
-	for ( const auto &myPair : *loadByCell ) {
-        cout << myPair.second << " -> " << myPair.first << endl;
-        fileNames.push_back(myPair.second);
+	cout<<"map size  "<<loadByCell->size()<<endl;
+	// origianl ----------------- start
+	// for ( const auto &myPair : *loadByCell ) {
+ //        cout << myPair.second << " *-> " << myPair.first << endl;
+ //        fileNames.push_back(myPair.second);
+ //    }
+	// origianl ----------------- end
+
+	// manual push
+	for (int i=0; i < 6; i++) {
+        cout << i << " *-> 115544"  << endl;
+        fileNames.push_back(i);
     }
 /*
 * Seed the slaves.
@@ -140,6 +152,46 @@ int LoadBalancer :: masterRefinementScheduler(int nProcs, map<long, int, std::gr
 	return totalJoinPairs;
 }
 
+
+// buddhi comment
+// -----------------------------------------------
+// int LoadBalancer :: refineOneCell(char *fileLayer1, char *fileLayer2)
+// {   
+//     	FileReader fileReader;
+//     	list<Geometry*> *geomsLayer1 = fileReader.readWKTFile(fileLayer1, NULL);
+    	
+//     	if(geomsLayer1 == NULL) 
+//     	{
+//     	   //cerr<<"Error: Empty Layer 1 file "<<fileLayer1<<endl;
+//     	   return 0;
+//     	}
+	    
+// 	    //cerr<<"Layer1 File #"<<fileLayer1<<", geoms, "<<geomsLayer1->size()<<endl;
+    	
+//    		list<Geometry*> *geomsLayer2 = fileReader.readWKTFile(fileLayer2, NULL);
+	    
+// 	    if(geomsLayer2 == NULL)
+// 	    {
+//     	  // cerr<<"Error: Empty Layer 2 file "<<fileLayer2<<endl; 
+//     	   return 0;
+//         }
+        
+// 	    Index index;
+//         index.createRTree(geomsLayer1);
+
+//     	//cerr<<"P"<<conf.rank<<" "<<hostname<<", Layer2 File #"<<(fileNum)<<", geoms, "<<geomsLayer2->size()<<endl;	
+    	   
+// 	    map<Geometry*, vector<void *> >*joinResult = index.query(geomsLayer2);
+    
+//         Join joinObj;
+    
+//         list<pair<Geometry*, Geometry*> >*pairs = joinObj.join(joinResult);
+//         //cout<<"Output Pairs Task "<<fileLayer1<<": "<<pairs->size()<<endl;
+//         return pairs->size();
+        
+// }
+// -----------------------------------------------
+
 int LoadBalancer :: refineOneCell(char *fileLayer1, char *fileLayer2)
 {   
     	FileReader fileReader;
@@ -151,7 +203,7 @@ int LoadBalancer :: refineOneCell(char *fileLayer1, char *fileLayer2)
     	   return 0;
     	}
 	    
-	    //cerr<<"Layer1 File #"<<fileLayer1<<", geoms, "<<geomsLayer1->size()<<endl;
+	    // cerr<<"Layer1 File #"<<fileLayer1<<", geoms, "<<geomsLayer1->size()<<endl;
     	
    		list<Geometry*> *geomsLayer2 = fileReader.readWKTFile(fileLayer2, NULL);
 	    
@@ -161,18 +213,30 @@ int LoadBalancer :: refineOneCell(char *fileLayer1, char *fileLayer2)
     	   return 0;
         }
         
-	    Index index;
-        index.createRTree(geomsLayer1);
+	    // Index index;
+     //    index.createRTree(geomsLayer1);
 
-    	//cerr<<"P"<<conf.rank<<" "<<hostname<<", Layer2 File #"<<(fileNum)<<", geoms, "<<geomsLayer2->size()<<endl;	
+    	// //cerr<<"P"<<conf.rank<<" "<<hostname<<", Layer2 File #"<<(fileNum)<<", geoms, "<<geomsLayer2->size()<<endl;	
     	   
-	    map<Geometry*, vector<void *> >*joinResult = index.query(geomsLayer2);
+	    // map<Geometry*, vector<void *> >*joinResult = index.query(geomsLayer2);
     
-        Join joinObj;
+     //    Join joinObj;
     
-        list<pair<Geometry*, Geometry*> >*pairs = joinObj.join(joinResult);
-        //cout<<"Output Pairs Task "<<fileLayer1<<": "<<pairs->size()<<endl;
-        return pairs->size();
+     //    list<pair<Geometry*, Geometry*> >*pairs = joinObj.join(joinResult);
+        // cout<<"Output Pairs Task "<<fileLayer1<<": "<<pairs->size()<<endl;
+        cout<<"refineOneCell "<<fileLayer1<<": "<<geomsLayer1->size()<<", "<<fileLayer2<<": "<<geomsLayer2->size()<<endl;
+
+        if (strcmp(fileLayer1,"../../data/64Parts/50")==0 || strcmp(fileLayer2, "../../data/64Parts/50")==0 || strcmp(fileLayer1,"../../data/64Parts/38")==0 || strcmp(fileLayer2, "../../data/64Parts/38")==0 || strcmp(fileLayer1,"../../data/64Parts/45")==0 || strcmp(fileLayer2, "../../data/64Parts/45")==0 || strcmp(fileLayer1,"../../data/64Parts/39")==0 || strcmp(fileLayer2, "../../data/64Parts/39")==0 || strcmp(fileLayer1,"../../data/64Parts/35")==0 || strcmp(fileLayer2, "../../data/64Parts/35")==0 || strcmp(fileLayer1,"../../data/64Parts/57")==0 || strcmp(fileLayer2, "../../data/64Parts/57")==0 || strcmp(fileLayer1,"../../data/64Parts/51")==0 || strcmp(fileLayer2, "../../data/64Parts/51")==0 || strcmp(fileLayer1,"../../data/64Parts/44")==0 || strcmp(fileLayer2, "../../data/64Parts/44")==0 || strcmp(fileLayer1,"../../data/64Parts/52")==0 || strcmp(fileLayer2, "../../data/64Parts/52")==0 || strcmp(fileLayer1,"../../data/64Parts/12")==0 || strcmp(fileLayer2, "../../data/64Parts/12")==0)
+        {
+        	cout<<"Error file"<<endl;
+        	return 0;
+        }
+
+        CudaJoinInterface reducers;
+        return reducers.createReducers2files(geomsLayer1, geomsLayer2);
+
+        // return 1;
+        // return pairs->size();
         
 }
 
@@ -291,7 +355,7 @@ map<long, int, std::greater<long>>* LoadBalancer :: distributedLoadCalc(int numF
 {   	
 	//MPILoadCalculator *loadCalculator = new StaticMPILoadCalculator();
 	MPILoadCalculator *loadCalculator = new DynamicMPILoadCalculator();
-	
+	// cout<<numFiles<<"--- "<<endl;
 	map<long, int, std::greater<long> >* loadByCell = loadCalculator->calculateLoad(numFiles, l1MBRFolder, l2MBRFolder);
 	
 	//mpiStaticLoadCalculator(numFiles, l1MBRFolder, l2MBRFolder);

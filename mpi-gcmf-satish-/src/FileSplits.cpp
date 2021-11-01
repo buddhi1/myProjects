@@ -65,5 +65,10 @@ void FileSplits :: write(char *data){
         // the function continues from where it left in previous invocation
         token = std::strtok(NULL, "\n");
     }
+    // print
+    // for (auto it = contents->begin(); it != contents->end(); ++it)
+    // {
+    //   cout<<"+ "<<*it<<endl;
+    // }
     free(dup);
 }

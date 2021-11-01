@@ -335,7 +335,7 @@ long SegmentIntersectJoin2(coord_t *bCoords, coord_t * oCoords, long pairNum, in
     dim3 bDim_CEI(512,1,1);    
     dim3 gDim_CEI(gD_CEI ,gD_CEI ,1);        
     Segment_Intersect_Join2<<<gDim_CEI, bDim_CEI>>>(bCoords, oCoords, pairNum, jCompactVector, jxy2IndexList, bPFVNum, oPFVNum, bEdgePSCounter, oEdgePSCounter, workLoadPSCounter, workLoadNum, bEdgeList, oEdgeList, *segIntersectJoinFlag);
-    GPUSync("ERROR (Segment_Intersect_Join):");
+    GPUSync("ERROR (Segment_Intersect_Join2):");
     long *joinPairNum;
     PrefixSum(pairNum, *segIntersectJoinFlag, NULL, &segJoinPSFlag, NULL, 1, 1);
     CopyFromGPU((void**)&joinPairNum, segJoinPSFlag+pairNum-1, sizeof(long), 1);
@@ -375,8 +375,9 @@ long SegmentIntersectJoin(coord_t *bCoords, coord_t * oCoords, long pairNum, int
     dim3 gDim_CEI(gD_CEI ,gD_CEI ,1);        
     Segment_Intersect_Join<<<gDim_CEI, bDim_CEI>>>(bCoords, oCoords, pairNum, jCompactVector, jxy2IndexList, bPFVNum, oPFVNum, bEdgePSCounter, oEdgePSCounter, bEdgeList, oEdgeList, *segIntersectJoinFlag);
     PrefixSum(pairNum, *segIntersectJoinFlag, NULL, &segJoinPSFlag, NULL, 1, 1);
-    GPUSync("ERROR (Segment_Intersect_Join):");
+    GPUSync("ERROR (Segment_Intersect_Join1):");
 
+    printf("In SegmentIntersectJoin %d \n", segJoinPSFlag+pairNum-1);
 
     CopyFromGPU((void**)&joinPairNum, segJoinPSFlag+pairNum-1, sizeof(long), 1);
     GPUSync("ERROR (Segment_Intersect_Join):");
@@ -384,7 +385,7 @@ long SegmentIntersectJoin(coord_t *bCoords, coord_t * oCoords, long pairNum, int
     //GPUPrintVector(pairNum, *segIntersectJoinFlag, 1);
     //exit(0);
 
-    //cudaFree(segJoinPSFlag);
+    cudaFree(segJoinPSFlag);
 
     return *joinPairNum; 
 }
@@ -392,7 +393,7 @@ long SegmentIntersectJoin(coord_t *bCoords, coord_t * oCoords, long pairNum, int
 
 //=========================== GetCMF =============================
 void GetCMBR(cudaStream_t gStream, long pairNum, int* jxyVector, coord_t* bMBR, coord_t* oMBR, coord_t** cMBR, int** jpipIndexList,
-             char** pipFlag, char**pipType, char** joinFlag, long** pipNum){
+             char** pipFlag, char**pipType, char** joinFlag, long* pipNum){
     long *pipPSFlag;
 
     cudaError_t cudaMemError=cudaMalloc((void**)joinFlag, sizeof(char)*pairNum);
@@ -413,13 +414,16 @@ void GetCMBR(cudaStream_t gStream, long pairNum, int* jxyVector, coord_t* bMBR, 
     PrefixSum(pairNum, *pipFlag, NULL, &pipPSFlag, NULL, 1, 1);
     CopyFromGPU((void**)&pipNum, pipPSFlag+pairNum-1, sizeof(long), 1, gStream);
     if(DEBUG_MODE)printf("\n\tNumber of Point in Polygon candidates: %ld\n", *pipNum);
-    //printf("\n\tNumber of Point in Polygon candidates222: %ld of %d\n", *pipNum, pairNum);
+    // printf("\n\tNumber of Point in Polygon candidates222: %ld of %d\n", *pipNum, pairNum);
 
-    cudaMemError=cudaMalloc((void**)jpipIndexList, sizeof(int)***pipNum);
+    // cudaMemError=cudaMalloc((void**)jpipIndexList, sizeof(int)***pipNum);
+    cudaMemError=cudaMalloc((void**)jpipIndexList, sizeof(int)**pipNum);
+
     GPUMAllocCheck(cudaMemError, "jpipIndexList");
     int gD_CV=sqrt(pairNum/1000)+1;
     dim3 gDim_CV(gD_CV ,gD_CV ,1);        
     dim3 bDim_CV(1024,1,1);    
+
     Make_Filtered_Index_List<<<gDim_CV, bDim_CV>>>(pairNum, pipPSFlag, NULL, *jpipIndexList);
     GPUSync("ERROR (Make_Filtered_Index_List):");
 
@@ -447,9 +451,12 @@ long PointInPolygonTest(coord_t *bCoords, coord_t* oCoords, long pairNum, long p
     }
     //dim3 bDim_PiP(thPerBlock,1,1);    
     dim3 bDim_PiP(1,1,1);    
-    dim3 gDim_PiP(gD_PiP ,gD_PiP ,1);        
+    dim3 gDim_PiP(gD_PiP ,gD_PiP ,1);   
+    printf("In ST_Intersect PointInPolygonTest ** \n");
+
     Point_In_Polygon_Test<<<gDim_PiP, bDim_PiP>>>(bCoords, oCoords, pipNum, jxyVector, jPiPIndexList, pipType, bVPSNum, oVPSNum, pipFlag, joinFlag);
     GPUSync("ERROR (Point_In_Polygon_Test):");
+    printf("In ST_Intersect PointInPolygonTest -- \n");
 
     long *jNum, *pipPSFlag;
     PrefixSum(pairNum, pipFlag, NULL, &pipPSFlag, NULL, 1, 1);

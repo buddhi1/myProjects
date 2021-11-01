@@ -7,15 +7,20 @@ map<long, int, std::greater<long> >* DynamicMPILoadCalculator :: calculateLoad(i
     MPI_Comm_rank(MPI_COMM_WORLD,  &rank);  
     
     map<int, long>* loadMapByFileID;
+    // map does not allow same key to duplicate with multiple values. There cannot be same number of size 
     map<long, int, std::greater<long> >* loadMapByLoadFactor = new map<long, int, std::greater<long> >();
    
     if(rank == 0) {
        loadMapByFileID = master(numFiles);
        for(int fileId = 0; fileId < numFiles; fileId++)
        {
-           if( loadMapByFileID->find(fileId) != loadMapByFileID->end())
-              loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId), fileId));
+           if( loadMapByFileID->find(fileId) != loadMapByFileID->end()) {
+              loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId), fileId));           		
+           	cout<<loadMapByFileID->at(fileId)<<" "<<fileId<<endl;
+           }
        }
+	cout<<"map size *"<<loadMapByLoadFactor->size()<<endl;
+
     }
     else {
        slave(numFiles, l1Mbr_folder, l2Mbr_folder);
@@ -84,13 +89,13 @@ void DynamicMPILoadCalculator :: slave(int numFiles, string l1Mbr_folder, string
         int l1Count = mbrReader.readMBRFile(l1File, l1Envs);
         
         int l2Count = mbrReader.readMBRFile(l2File, l2Envs);
-   
+   		
         if(l1Count > 0 && l2Count > 0)
         {
             output = reduce(work, l1Envs, l2Envs);
             filterResult.pairs = output;
             filterResult.fileID = work; 
-           //cout<<l1Count<<" "<<l2Count<<endl;
+           // cout<<l1File<<" "<<l1File<<endl;
         }
         else
         {
@@ -122,6 +127,7 @@ map<int, long>* DynamicMPILoadCalculator :: master(int numFiles)
 /*
 * Seed the slaves.
 */
+	// work for salves to get started
     int fileIndex = 0;
     
 	for (rank = 1; rank < nProcs; ++rank) {
@@ -134,26 +140,27 @@ map<int, long>* DynamicMPILoadCalculator :: master(int numFiles)
 	    }
 	}
 
+
 /*
 * Receive a result from any slave and dispatch a new work
 * request work requests have been exhausted.
 */  
 	while (fileIndex < numFiles) {
 	    FilterResult result;
-		
 		MPI_Recv(&result, 1, FilterResType,  MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);   
 		int sender = status.MPI_SOURCE;
         totalWorkDoneArr[sender] += result.pairs;
 
         if(result.pairs > 0)
            loadMap->insert(pair<int, long>(result.fileID, result.pairs));
-        //cout<<"Result "<<result<<endl;
+        // cout<<"Result "<<result.pairs<<endl;
         
 		work = fileIndex;
 		MPI_Send(&work, 1, MPI_INT, status.MPI_SOURCE, WORKTAG, MPI_COMM_WORLD);
 		
 		fileIndex++;
 	}
+
 /*
 * Receive results for outstanding work requests.
 */
@@ -172,7 +179,7 @@ map<int, long>* DynamicMPILoadCalculator :: master(int numFiles)
 */
 	for (rank = 1; rank < nProcs; ++rank) {
 		MPI_Send(0, 0, MPI_INT, rank, DIETAG, MPI_COMM_WORLD);
-		//cout<<"Output found by P[" <<rank<<"]: "<<totalWorkDoneArr[rank]<<endl;
+		cout<<"Output found by P[" <<rank<<"]: "<<totalWorkDoneArr[rank]<<endl;
 	}
 	
 	return loadMap;

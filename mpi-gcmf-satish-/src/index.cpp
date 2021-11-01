@@ -126,14 +126,14 @@ void Index :: createRTree(vector<GeomInfo*> *envs)
 
 void Index :: createRTree(map<int, Envelope*> *gridCells)
 {
-  //cout<<"inside createTree"<<endl;
+  // cout<<"inside createTree"<<endl;
   index = new geos::index::strtree::STRtree();
   
   for(auto it = gridCells->cbegin(); it != gridCells->cend(); ++it)
   {
      index->insert(it->second, (void *)&(it->first));
-      //Envelope *env = it->second;
-      //cout<<env->toString()<<endl;
+      // Envelope *env = it->second;
+      // cout<<env->toString()<<endl;
   }
 }
 

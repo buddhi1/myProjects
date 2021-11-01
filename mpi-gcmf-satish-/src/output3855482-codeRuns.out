@@ -1,0 +1,32 @@
+--before config
+
+
+
+ ***--config.h constructor start
+
+
+ ***--before readfile .cpp
+
+
+ ***--end readfile .cpp
+
+
+ ***--before readfile .cpp
+
+
+ ***--end readfile .cpp
+
+
+
+ ***--config.h constructor end
+--after config
+Number of arguments 4
+**before file partitioner
+init done
+Partition done
+Universe: 0, (-9999.990000 -1000.990000), (9999.990000 1000.000000) 
+PopulateGridCells layer A 0
+PopulateGridCells layer B 0
+In createReducers 
+before loop
+v001.ib.bridges2.psc.edu:0, Time, 0.00293558

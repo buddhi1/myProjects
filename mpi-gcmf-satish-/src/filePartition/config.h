@@ -26,7 +26,7 @@ class Config
   
   Config(int argc, char **argv)
   {
-    cout << "\n\n\n ***--before .h" << endl;
+    // cout << "config.h constructor start" << endl;
     numPartitions = atoi(argv[1]);
 
     layer1 = getFilesFromDir(argv[2]);
@@ -36,12 +36,15 @@ class Config
       log_file = argv[4];  //logfile
     else
       log_file = "dummy";  //logfile
+
+    cout<<"layer1Files "<<layer1->size()<<" layer2Files "<<layer2->size()<<endl;
   }
 
   vector<string>* getLayer1();
   vector<string>* getLayer2(); 
 
   int initMPI(int argc, char **argv);
+
 };
 
 #endif

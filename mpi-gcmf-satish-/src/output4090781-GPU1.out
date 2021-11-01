@@ -1,0 +1,1327 @@
+before config
+partition directories - before
+partition directories - end
+
+partition directories - before
+partition directories - end
+
+layer1Files 66 layer2Files 66
+after config
+
+Number of arguments 4
+File partitioner done
+MPI layer1 ../../data/64Parts/29
+MPI layer2 ../../data/64Parts/29
+Init done
+FileSize 531711
+FileSize 531711
+Partition done
+layer1 numLines: 1499 layer2 numLines: 1499
+WKTParser done
+P0 v023.ib.bridges2.psc.edu, geoms 1, 1499
+P0 v023.ib.bridges2.psc.edu, geoms 2, 1499
+GeometryUtility :: getMBR done
+*** types.reduceByUnion
+Universe: 0, (135.466816 -44.957836), (178.489006 -22.667855) 
+*** UniformGrid
+PopulateGridCells layer A 0
+PopulateGridCells layer B 0
+strategy ready
+grid ready
+strategy created process map
+geomsBuffMgr done
+shuffleExchangeGrpByCell constructor ready
+MPI_BufferManager 0
+ # 1500
+MPI_BufferManager 1
+MPI_BufferManager 2
+bBoxPair ready
+attrPair ready
+recvBufPair ready
+geomMapPair done
+In createReducers 
+before loop64 layer1Map size: 34 layer2Map size: 34
+Cell 0
+Cell 1
+Cell 2
+Cell 3
+before
+after
+layer1 PolNum 13 layer2 polNum 13
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.029600 (1.029600)
+
+	Sorting 1D: 0.388416 
+
+	Counting MBR intersection : 1.590592 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.646688 
+
+
+	Polygon pairs candidate: 13
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.133472 (4.163072)
+
+	Number of Point in Polygon candidates: 13
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.108960 (4.272032)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 13
+
+GPU Running Time for Point in Polygon Test: 3.033760 (7.305792)
+
+	Number of candidates for CMF filter: 12
+
+	Total number of base edges: 83 	 Total number of overlay edges: 83
+
+GPU Running Time for Counting Common MBR Filter: 0.195104 (7.500896)
+
+GPU Running Time for Applying Common MBR Filter : 0.013696 (7.514593)
+In SegmentIntersectJoin -136303016 
+
+	Actual number of intersected polygon pairs: 12
+
+GPU Running Time for Counting Edge Intersecions: 0.047136 (7.561728)
+Cell 4
+before
+after
+layer1 PolNum 21 layer2 polNum 21
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.054272 (1.054272)
+
+	Sorting 1D: 0.378720 
+
+	Counting MBR intersection : 1.626944 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.686080 
+
+
+	Polygon pairs candidate: 21
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.141728 (4.196000)
+
+	Number of Point in Polygon candidates: 21
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.096736 (4.292736)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 20
+
+GPU Running Time for Point in Polygon Test: 3.039840 (7.332576)
+
+	Number of candidates for CMF filter: 21
+
+	Total number of base edges: 140 	 Total number of overlay edges: 140
+
+GPU Running Time for Counting Common MBR Filter: 0.197216 (7.529792)
+
+GPU Running Time for Applying Common MBR Filter : 0.013824 (7.543616)
+In SegmentIntersectJoin -136300896 
+
+	Actual number of intersected polygon pairs: 21
+
+GPU Running Time for Counting Edge Intersecions: 0.057152 (7.600768)
+Cell 5
+Cell 6
+before
+after
+layer1 PolNum 23 layer2 polNum 23
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.052320 (1.052320)
+
+	Sorting 1D: 0.381984 
+
+	Counting MBR intersection : 1.625792 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.683072 
+
+
+	Polygon pairs candidate: 25
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.145568 (4.197888)
+
+	Number of Point in Polygon candidates: 23
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.115296 (4.313184)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 22
+
+GPU Running Time for Point in Polygon Test: 3.016192 (7.329376)
+
+	Number of candidates for CMF filter: 25
+
+	Total number of base edges: 204 	 Total number of overlay edges: 204
+
+GPU Running Time for Counting Common MBR Filter: 0.197440 (7.526816)
+
+GPU Running Time for Applying Common MBR Filter : 0.014208 (7.541024)
+In SegmentIntersectJoin -136299840 
+
+	Actual number of intersected polygon pairs: 23
+
+GPU Running Time for Counting Edge Intersecions: 0.059776 (7.600800)
+Cell 7
+Cell 8
+before
+after
+layer1 PolNum 8 layer2 polNum 8
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.051200 (1.051200)
+
+	Sorting 1D: 0.379424 
+
+	Counting MBR intersection : 1.626368 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.684160 
+
+
+	Polygon pairs candidate: 8
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.142240 (4.193440)
+
+	Number of Point in Polygon candidates: 8
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097952 (4.291392)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 7
+
+GPU Running Time for Point in Polygon Test: 3.038720 (7.330112)
+
+	Number of candidates for CMF filter: 8
+
+	Total number of base edges: 57 	 Total number of overlay edges: 57
+
+GPU Running Time for Counting Common MBR Filter: 0.195552 (7.525663)
+
+GPU Running Time for Applying Common MBR Filter : 0.013984 (7.539648)
+In SegmentIntersectJoin -136304072 
+
+	Actual number of intersected polygon pairs: 8
+
+GPU Running Time for Counting Edge Intersecions: 0.047968 (7.587615)
+Cell 9
+before
+after
+layer1 PolNum 286 layer2 polNum 286
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.072096 (1.072096)
+
+	Sorting 1D: 0.613504 
+
+	Counting MBR intersection : 1.354112 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.412000 
+
+
+	Polygon pairs candidate: 1219
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.116544 (4.188640)
+
+	Number of Point in Polygon candidates: 690
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.115008 (4.303648)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 690
+
+GPU Running Time for Point in Polygon Test: 3.042080 (7.345728)
+
+	Number of candidates for CMF filter: 1218
+
+	Total number of base edges: 5288 	 Total number of overlay edges: 5286
+
+GPU Running Time for Counting Common MBR Filter: 0.238368 (7.584096)
+
+GPU Running Time for Applying Common MBR Filter : 0.020512 (7.604608)
+In SegmentIntersectJoin -136098392 
+
+	Actual number of intersected polygon pairs: 540
+
+GPU Running Time for Counting Edge Intersecions: 0.070560 (7.675168)
+Cell 10
+before
+after
+layer1 PolNum 149 layer2 polNum 149
+layer1 7
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.065216 (1.065216)
+
+	Sorting 1D: 0.414368 
+
+	Counting MBR intersection : 1.580608 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.639360 
+
+
+	Polygon pairs candidate: 153
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.131072 (4.196288)
+
+	Number of Point in Polygon candidates: 149
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.098144 (4.294432)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 149
+
+GPU Running Time for Point in Polygon Test: 3.059808 (7.354240)
+
+	Number of candidates for CMF filter: 152
+
+	Total number of base edges: 977 	 Total number of overlay edges: 977
+
+GPU Running Time for Counting Common MBR Filter: 0.188640 (7.542881)
+
+GPU Running Time for Applying Common MBR Filter : 0.014528 (7.557408)
+In SegmentIntersectJoin -136250696 
+
+	Actual number of intersected polygon pairs: 148
+
+GPU Running Time for Counting Edge Intersecions: 0.054464 (7.611872)
+Cell 11
+before
+after
+layer1 PolNum 79 layer2 polNum 79
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.058112 (1.058112)
+
+	Sorting 1D: 0.394240 
+
+	Counting MBR intersection : 1.588288 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.645088 
+
+
+	Polygon pairs candidate: 83
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.135904 (4.194016)
+
+	Number of Point in Polygon candidates: 81
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.098400 (4.292416)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 80
+
+GPU Running Time for Point in Polygon Test: 3.037728 (7.330144)
+
+	Number of candidates for CMF filter: 83
+
+	Total number of base edges: 474 	 Total number of overlay edges: 474
+
+GPU Running Time for Counting Common MBR Filter: 0.201824 (7.531968)
+
+GPU Running Time for Applying Common MBR Filter : 0.014400 (7.546368)
+In SegmentIntersectJoin -136278896 
+
+	Actual number of intersected polygon pairs: 81
+
+GPU Running Time for Counting Edge Intersecions: 0.050848 (7.597216)
+Cell 12
+before
+after
+layer1 PolNum 34 layer2 polNum 34
+layer1 7
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.049760 (1.049760)
+
+	Sorting 1D: 0.392480 
+
+	Counting MBR intersection : 1.610592 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.668608 
+
+
+	Polygon pairs candidate: 34
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.142560 (4.192320)
+
+	Number of Point in Polygon candidates: 34
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.102752 (4.295072)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 33
+
+GPU Running Time for Point in Polygon Test: 3.032448 (7.327520)
+
+	Number of candidates for CMF filter: 34
+
+	Total number of base edges: 233 	 Total number of overlay edges: 233
+
+GPU Running Time for Counting Common MBR Filter: 0.198112 (7.525632)
+
+GPU Running Time for Applying Common MBR Filter : 0.013984 (7.539617)
+In SegmentIntersectJoin -136307448 
+
+	Actual number of intersected polygon pairs: 34
+
+GPU Running Time for Counting Edge Intersecions: 0.048640 (7.588256)
+Cell 13
+Cell 14
+before
+after
+layer1 PolNum 162 layer2 polNum 162
+layer1 14
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.068896 (1.068896)
+
+	Sorting 1D: 0.425664 
+
+	Counting MBR intersection : 1.566304 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.626976 
+
+
+	Polygon pairs candidate: 238
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.131456 (4.200352)
+
+	Number of Point in Polygon candidates: 192
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.104832 (4.305184)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 192
+
+GPU Running Time for Point in Polygon Test: 3.024800 (7.329984)
+
+	Number of candidates for CMF filter: 236
+
+	Total number of base edges: 1542 	 Total number of overlay edges: 1542
+
+GPU Running Time for Counting Common MBR Filter: 0.193600 (7.523584)
+
+GPU Running Time for Applying Common MBR Filter : 0.014176 (7.537760)
+In SegmentIntersectJoin -136267976 
+
+	Actual number of intersected polygon pairs: 169
+
+GPU Running Time for Counting Edge Intersecions: 0.068672 (7.606432)
+Cell 15
+Cell 16
+Cell 17
+Cell 18
+Cell 19
+Cell 20
+before
+after
+layer1 PolNum 75 layer2 polNum 75
+layer1 20
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.058976 (1.058976)
+
+	Sorting 1D: 0.401696 
+
+	Counting MBR intersection : 1.594208 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.653472 
+
+
+	Polygon pairs candidate: 83
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.133536 (4.192512)
+
+	Number of Point in Polygon candidates: 75
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.098688 (4.291200)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 73
+
+GPU Running Time for Point in Polygon Test: 3.035776 (7.326976)
+
+	Number of candidates for CMF filter: 83
+
+	Total number of base edges: 590 	 Total number of overlay edges: 590
+
+GPU Running Time for Counting Common MBR Filter: 0.197408 (7.524384)
+
+GPU Running Time for Applying Common MBR Filter : 0.014304 (7.538688)
+In SegmentIntersectJoin -136276848 
+
+	Actual number of intersected polygon pairs: 75
+
+GPU Running Time for Counting Edge Intersecions: 0.050400 (7.589088)
+Cell 21
+before
+after
+layer1 PolNum 1 layer2 polNum 1
+layer1 10
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.048640 (1.048640)
+
+	Sorting 1D: 0.372640 
+
+	Counting MBR intersection : 1.635776 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.693312 
+
+
+	Polygon pairs candidate: 1
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.158496 (4.207136)
+
+	Number of Point in Polygon candidates: 1
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097824 (4.304960)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 0
+
+GPU Running Time for Point in Polygon Test: 3.014752 (7.319712)
+
+	Number of candidates for CMF filter: 1
+
+	Total number of base edges: 10 	 Total number of overlay edges: 10
+
+GPU Running Time for Counting Common MBR Filter: 0.199712 (7.519424)
+
+GPU Running Time for Applying Common MBR Filter : 0.013952 (7.533376)
+In SegmentIntersectJoin -136304128 
+
+	Actual number of intersected polygon pairs: 1
+
+GPU Running Time for Counting Edge Intersecions: 0.046112 (7.579488)
+Cell 22
+before
+after
+layer1 PolNum 11 layer2 polNum 11
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.048864 (1.048864)
+
+	Sorting 1D: 0.380960 
+
+	Counting MBR intersection : 1.625504 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.681792 
+
+
+	Polygon pairs candidate: 11
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.141632 (4.190496)
+
+	Number of Point in Polygon candidates: 11
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.096768 (4.287264)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 10
+
+GPU Running Time for Point in Polygon Test: 3.041568 (7.328832)
+
+	Number of candidates for CMF filter: 11
+
+	Total number of base edges: 77 	 Total number of overlay edges: 77
+
+GPU Running Time for Counting Common MBR Filter: 0.196320 (7.525152)
+
+GPU Running Time for Applying Common MBR Filter : 0.014080 (7.539232)
+In SegmentIntersectJoin -136303024 
+
+	Actual number of intersected polygon pairs: 11
+
+GPU Running Time for Counting Edge Intersecions: 0.050592 (7.589824)
+Cell 23
+before
+after
+layer1 PolNum 85 layer2 polNum 85
+layer1 7
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.061024 (1.061024)
+
+	Sorting 1D: 0.399776 
+
+	Counting MBR intersection : 1.596224 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.654688 
+
+
+	Polygon pairs candidate: 95
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.134080 (4.195104)
+
+	Number of Point in Polygon candidates: 85
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.100288 (4.295392)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 84
+
+GPU Running Time for Point in Polygon Test: 3.038272 (7.333663)
+
+	Number of candidates for CMF filter: 95
+
+	Total number of base edges: 1118 	 Total number of overlay edges: 1118
+
+GPU Running Time for Counting Common MBR Filter: 0.200640 (7.534304)
+
+GPU Running Time for Applying Common MBR Filter : 0.015296 (7.549600)
+In SegmentIntersectJoin -136288544 
+
+	Actual number of intersected polygon pairs: 87
+
+GPU Running Time for Counting Edge Intersecions: 0.089600 (7.639200)
+Cell 24
+Cell 25
+Cell 26
+Cell 27
+Cell 28
+Cell 29
+before
+after
+layer1 PolNum 127 layer2 polNum 127
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.067424 (1.067424)
+
+	Sorting 1D: 0.412384 
+
+	Counting MBR intersection : 1.580064 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.636864 
+
+
+	Polygon pairs candidate: 133
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.141984 (4.209408)
+
+	Number of Point in Polygon candidates: 127
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.113120 (4.322528)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 126
+
+GPU Running Time for Point in Polygon Test: 3.011168 (7.333696)
+
+	Number of candidates for CMF filter: 133
+
+	Total number of base edges: 1455 	 Total number of overlay edges: 1455
+
+GPU Running Time for Counting Common MBR Filter: 0.202752 (7.536448)
+
+GPU Running Time for Applying Common MBR Filter : 0.015392 (7.551840)
+In SegmentIntersectJoin -136248800 
+
+	Actual number of intersected polygon pairs: 127
+
+GPU Running Time for Counting Edge Intersecions: 0.070208 (7.622048)
+Cell 30
+Cell 31
+before
+after
+layer1 PolNum 21 layer2 polNum 21
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.055072 (1.055072)
+
+	Sorting 1D: 0.374496 
+
+	Counting MBR intersection : 1.632512 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.691360 
+
+
+	Polygon pairs candidate: 21
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.141440 (4.196512)
+
+	Number of Point in Polygon candidates: 21
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.096736 (4.293248)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 20
+
+GPU Running Time for Point in Polygon Test: 3.039008 (7.332255)
+
+	Number of candidates for CMF filter: 21
+
+	Total number of base edges: 174 	 Total number of overlay edges: 174
+
+GPU Running Time for Counting Common MBR Filter: 0.213472 (7.545727)
+
+GPU Running Time for Applying Common MBR Filter : 0.014496 (7.560223)
+In SegmentIntersectJoin -136300896 
+
+	Actual number of intersected polygon pairs: 21
+
+GPU Running Time for Counting Edge Intersecions: 0.049952 (7.610175)
+Cell 32
+before
+after
+layer1 PolNum 35 layer2 polNum 35
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.052736 (1.052736)
+
+	Sorting 1D: 0.391648 
+
+	Counting MBR intersection : 1.614432 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.672576 
+
+
+	Polygon pairs candidate: 35
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.160800 (4.213536)
+
+	Number of Point in Polygon candidates: 35
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.100096 (4.313632)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 35
+
+GPU Running Time for Point in Polygon Test: 3.015424 (7.329057)
+
+	Number of candidates for CMF filter: 34
+
+	Total number of base edges: 203 	 Total number of overlay edges: 203
+
+GPU Running Time for Counting Common MBR Filter: 0.203648 (7.532705)
+
+GPU Running Time for Applying Common MBR Filter : 0.014080 (7.546785)
+In SegmentIntersectJoin -136307448 
+
+	Actual number of intersected polygon pairs: 34
+
+GPU Running Time for Counting Edge Intersecions: 0.065888 (7.612673)
+Cell 33
+before
+after
+layer1 PolNum 4 layer2 polNum 4
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 0.991328 (0.991328)
+
+	Sorting 1D: 0.385312 
+
+	Counting MBR intersection : 1.598080 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.652320 
+
+
+	Polygon pairs candidate: 4
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.114304 (4.105632)
+
+	Number of Point in Polygon candidates: 4
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097696 (4.203328)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 3
+
+GPU Running Time for Point in Polygon Test: 3.045760 (7.249087)
+
+	Number of candidates for CMF filter: 4
+
+	Total number of base edges: 34 	 Total number of overlay edges: 34
+
+GPU Running Time for Counting Common MBR Filter: 0.195104 (7.444191)
+
+GPU Running Time for Applying Common MBR Filter : 0.014560 (7.458752)
+In SegmentIntersectJoin -136304104 
+
+	Actual number of intersected polygon pairs: 4
+
+GPU Running Time for Counting Edge Intersecions: 0.050528 (7.509280)
+Cell 34
+Cell 35
+before
+after
+layer1 PolNum 3 layer2 polNum 3
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.062208 (1.062208)
+
+	Sorting 1D: 0.373920 
+
+	Counting MBR intersection : 1.619552 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.677440 
+
+
+	Polygon pairs candidate: 3
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.130784 (4.192992)
+
+	Number of Point in Polygon candidates: 3
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.112928 (4.305920)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 2
+
+GPU Running Time for Point in Polygon Test: 3.025472 (7.331392)
+
+	Number of candidates for CMF filter: 3
+
+	Total number of base edges: 15 	 Total number of overlay edges: 15
+
+GPU Running Time for Counting Common MBR Filter: 0.206560 (7.537952)
+
+GPU Running Time for Applying Common MBR Filter : 0.014144 (7.552096)
+In SegmentIntersectJoin -136304112 
+
+	Actual number of intersected polygon pairs: 3
+
+GPU Running Time for Counting Edge Intersecions: 0.047456 (7.599552)
+Cell 36
+before
+after
+layer1 PolNum 104 layer2 polNum 104
+layer1 10
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.061024 (1.061024)
+
+	Sorting 1D: 0.397792 
+
+	Counting MBR intersection : 1.600992 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.659520 
+
+
+	Polygon pairs candidate: 124
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.135072 (4.196096)
+
+	Number of Point in Polygon candidates: 108
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.098144 (4.294240)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 106
+
+GPU Running Time for Point in Polygon Test: 3.044064 (7.338304)
+
+	Number of candidates for CMF filter: 124
+
+	Total number of base edges: 917 	 Total number of overlay edges: 917
+
+GPU Running Time for Counting Common MBR Filter: 0.200352 (7.538656)
+
+GPU Running Time for Applying Common MBR Filter : 0.015008 (7.553664)
+In SegmentIntersectJoin -136291368 
+
+	Actual number of intersected polygon pairs: 120
+
+GPU Running Time for Counting Edge Intersecions: 0.055360 (7.609024)
+Cell 37
+before
+after
+layer1 PolNum 34 layer2 polNum 34
+layer1 8
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.052320 (1.052320)
+
+	Sorting 1D: 0.388736 
+
+	Counting MBR intersection : 1.616416 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.673312 
+
+
+	Polygon pairs candidate: 36
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.140800 (4.193120)
+
+	Number of Point in Polygon candidates: 34
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097312 (4.290432)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 33
+
+GPU Running Time for Point in Polygon Test: 3.039328 (7.329760)
+
+	Number of candidates for CMF filter: 36
+
+	Total number of base edges: 236 	 Total number of overlay edges: 236
+
+GPU Running Time for Counting Common MBR Filter: 0.200736 (7.530496)
+
+GPU Running Time for Applying Common MBR Filter : 0.014208 (7.544704)
+In SegmentIntersectJoin -136307432 
+
+	Actual number of intersected polygon pairs: 34
+
+GPU Running Time for Counting Edge Intersecions: 0.052032 (7.596736)
+Cell 38
+before
+after
+layer1 PolNum 21 layer2 polNum 21
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.055136 (1.055136)
+
+	Sorting 1D: 0.380544 
+
+	Counting MBR intersection : 1.621632 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.678656 
+
+
+	Polygon pairs candidate: 21
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.135616 (4.190752)
+
+	Number of Point in Polygon candidates: 21
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.094944 (4.285696)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 20
+
+GPU Running Time for Point in Polygon Test: 3.043392 (7.329088)
+
+	Number of candidates for CMF filter: 21
+
+	Total number of base edges: 115 	 Total number of overlay edges: 115
+
+GPU Running Time for Counting Common MBR Filter: 0.193856 (7.522944)
+
+GPU Running Time for Applying Common MBR Filter : 0.013920 (7.536864)
+In SegmentIntersectJoin -136301920 
+
+	Actual number of intersected polygon pairs: 21
+
+GPU Running Time for Counting Edge Intersecions: 0.046784 (7.583648)
+Cell 39
+before
+after
+layer1 PolNum 42 layer2 polNum 42
+layer1 9
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.057376 (1.057376)
+
+	Sorting 1D: 0.388800 
+
+	Counting MBR intersection : 1.614048 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.671520 
+
+
+	Polygon pairs candidate: 44
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.137120 (4.194496)
+
+	Number of Point in Polygon candidates: 44
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097344 (4.291840)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 43
+
+GPU Running Time for Point in Polygon Test: 3.040928 (7.332768)
+
+	Number of candidates for CMF filter: 44
+
+	Total number of base edges: 329 	 Total number of overlay edges: 329
+
+GPU Running Time for Counting Common MBR Filter: 0.191008 (7.523776)
+
+GPU Running Time for Applying Common MBR Filter : 0.014592 (7.538368)
+In SegmentIntersectJoin -136306344 
+
+	Actual number of intersected polygon pairs: 42
+
+GPU Running Time for Counting Edge Intersecions: 0.048448 (7.586816)
+Cell 40
+Cell 41
+before
+after
+layer1 PolNum 2 layer2 polNum 2
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.056064 (1.056064)
+
+	Sorting 1D: 0.407104 
+
+	Counting MBR intersection : 1.588704 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.647648 
+
+
+	Polygon pairs candidate: 2
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.134464 (4.190528)
+
+	Number of Point in Polygon candidates: 2
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097504 (4.288032)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 2
+
+GPU Running Time for Point in Polygon Test: 3.039840 (7.327872)
+
+	Number of candidates for CMF filter: 1
+
+	Total number of base edges: 7 	 Total number of overlay edges: 7
+
+GPU Running Time for Counting Common MBR Filter: 0.185376 (7.513248)
+
+GPU Running Time for Applying Common MBR Filter : 0.013536 (7.526784)
+In SegmentIntersectJoin -136304128 
+
+	Actual number of intersected polygon pairs: 1
+
+GPU Running Time for Counting Edge Intersecions: 0.045152 (7.571937)
+Cell 42
+before
+after
+layer1 PolNum 2 layer2 polNum 2
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.046016 (1.046016)
+
+	Sorting 1D: 0.366336 
+
+	Counting MBR intersection : 1.626048 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.683936 
+
+
+	Polygon pairs candidate: 2
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.141376 (4.187392)
+
+	Number of Point in Polygon candidates: 2
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.094912 (4.282304)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 1
+
+GPU Running Time for Point in Polygon Test: 3.043552 (7.325856)
+
+	Number of candidates for CMF filter: 2
+
+	Total number of base edges: 10 	 Total number of overlay edges: 10
+
+GPU Running Time for Counting Common MBR Filter: 0.185536 (7.511392)
+
+GPU Running Time for Applying Common MBR Filter : 0.013888 (7.525280)
+In SegmentIntersectJoin -136304120 
+
+	Actual number of intersected polygon pairs: 2
+
+GPU Running Time for Counting Edge Intersecions: 0.047584 (7.572864)
+Cell 43
+before
+after
+layer1 PolNum 2 layer2 polNum 2
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.049024 (1.049024)
+
+	Sorting 1D: 0.380064 
+
+	Counting MBR intersection : 1.630848 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.687968 
+
+
+	Polygon pairs candidate: 2
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.145376 (4.194400)
+
+	Number of Point in Polygon candidates: 2
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.100032 (4.294432)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 1
+
+GPU Running Time for Point in Polygon Test: 3.042016 (7.336448)
+
+	Number of candidates for CMF filter: 2
+
+	Total number of base edges: 10 	 Total number of overlay edges: 10
+
+GPU Running Time for Counting Common MBR Filter: 0.201920 (7.538368)
+
+GPU Running Time for Applying Common MBR Filter : 0.014240 (7.552608)
+In SegmentIntersectJoin -136304120 
+
+	Actual number of intersected polygon pairs: 2
+
+GPU Running Time for Counting Edge Intersecions: 0.047328 (7.599936)
+Cell 44
+before
+after
+layer1 PolNum 13 layer2 polNum 13
+layer1 5
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.047232 (1.047232)
+
+	Sorting 1D: 0.385472 
+
+	Counting MBR intersection : 1.620384 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.677824 
+
+
+	Polygon pairs candidate: 13
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.143040 (4.190272)
+
+	Number of Point in Polygon candidates: 13
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097344 (4.287616)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 13
+
+GPU Running Time for Point in Polygon Test: 3.055968 (7.343584)
+
+	Number of candidates for CMF filter: 12
+
+	Total number of base edges: 71 	 Total number of overlay edges: 71
+
+GPU Running Time for Counting Common MBR Filter: 0.181120 (7.524704)
+
+GPU Running Time for Applying Common MBR Filter : 0.015072 (7.539776)
+In SegmentIntersectJoin -136303016 
+
+	Actual number of intersected polygon pairs: 12
+
+GPU Running Time for Counting Edge Intersecions: 0.047392 (7.587168)
+Cell 45
+before
+after
+layer1 PolNum 105 layer2 polNum 105
+layer1 19
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.060032 (1.060032)
+
+	Sorting 1D: 0.405920 
+
+	Counting MBR intersection : 1.593216 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.650496 
+
+
+	Polygon pairs candidate: 105
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.134656 (4.194688)
+
+	Number of Point in Polygon candidates: 105
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.097408 (4.292096)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 103
+
+GPU Running Time for Point in Polygon Test: 3.037824 (7.329920)
+
+	Number of candidates for CMF filter: 105
+
+	Total number of base edges: 947 	 Total number of overlay edges: 947
+
+GPU Running Time for Counting Common MBR Filter: 0.191968 (7.521888)
+
+GPU Running Time for Applying Common MBR Filter : 0.014080 (7.535968)
+In SegmentIntersectJoin -136289472 
+
+	Actual number of intersected polygon pairs: 105
+
+GPU Running Time for Counting Edge Intersecions: 0.072736 (7.608704)
+Cell 46
+before
+after
+layer1 PolNum 24 layer2 polNum 24
+layer1 6
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.047840 (1.047840)
+
+	Sorting 1D: 0.377984 
+
+	Counting MBR intersection : 1.630528 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.687808 
+
+
+	Polygon pairs candidate: 26
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.141216 (4.189056)
+
+	Number of Point in Polygon candidates: 24
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.096448 (4.285504)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 23
+
+GPU Running Time for Point in Polygon Test: 3.040704 (7.326208)
+
+	Number of candidates for CMF filter: 26
+
+	Total number of base edges: 153 	 Total number of overlay edges: 153
+
+GPU Running Time for Counting Common MBR Filter: 0.201120 (7.527328)
+
+GPU Running Time for Applying Common MBR Filter : 0.014144 (7.541472)
+In SegmentIntersectJoin -136300856 
+
+	Actual number of intersected polygon pairs: 24
+
+GPU Running Time for Counting Edge Intersecions: 0.046112 (7.587584)
+Cell 47
+before
+after
+layer1 PolNum 4 layer2 polNum 4
+layer1 8
+In ST_Intersect
+
+
+GPU running time for transfering data to GPU: 1.049056 (1.049056)
+
+	Sorting 1D: 0.375552 
+
+	Counting MBR intersection : 1.633440 
+
+	Computing MBR intersection (new approach 1D [dim:X] ): 2.693088 
+
+
+	Polygon pairs candidate: 4
+
+GPU Running Time For Computing MBR intersection (new approach 1D [dim:X] ): 3.145280 (4.194336)
+
+	Number of Point in Polygon candidates: 4
+
+GPU Running Time for CMF Filter for Point in Polygon Test: 0.095904 (4.290240)
+In ST_Intersect PointInPolygonTest 111 
+In ST_Intersect PointInPolygonTest 8998 
+
+	Number of within pairs: 4
+
+GPU Running Time for Point in Polygon Test: 3.042176 (7.332416)
+
+	Number of candidates for CMF filter: 3
+
+	Total number of base edges: 15 	 Total number of overlay edges: 15
+
+GPU Running Time for Counting Common MBR Filter: 0.194880 (7.527296)
+
+GPU Running Time for Applying Common MBR Filter : 0.014912 (7.542208)
+In SegmentIntersectJoin -136304112 
+
+	Actual number of intersected polygon pairs: 3
+
+GPU Running Time for Counting Edge Intersecions: 0.045472 (7.587680)
+Cell 48
+Cell 49
+Cell 50
+Cell 51
+Cell 52
+Cell 53
+Cell 54
+Cell 55
+Cell 56
+Cell 57
+Cell 58
+Cell 59
+Cell 60
+Cell 61
+Cell 62
+Cell 63
+createReducers done
+v023.ib.bridges2.psc.edu:0, Time, 4.97247

@@ -19,12 +19,17 @@ pair<list<Geometry*>*, list<Geometry*>* >* BufferManagerForGeoms :: shuffleExcha
 
 pair<map<int, list<Geometry*>* > *, map<int, list<Geometry*>* > * >* BufferManagerForGeoms :: shuffleExchangeGrpByCell()
 {
+    // cout<<"shuffleExchangeGrpByCell accessed"<< endl;
     MPI_BufferManager manager(this->strategy, this->grid, this->args);
+    cout<<"shuffleExchangeGrpByCell constructor ready"<< endl;
     pair< pair< bbox*, int>* , pair< bbox*, int>* >* bBoxPair = manager.shuffleExchangeMBR();
+    cout<<"bBoxPair ready"<< endl;
     
     pair<CollectiveAttrGeom*, CollectiveAttrGeom*>* attrPair = getAllToAllData();
+    cout<<"attrPair ready"<< endl;
 
 	pair<pair<char *,int>*, pair<char *,int>* >*recvBufPair = shuffleExchangeGeoms(attrPair);
+    cout<<"recvBufPair ready"<< endl;
 
 	//cout<<"shuffled"<<endl;
 	

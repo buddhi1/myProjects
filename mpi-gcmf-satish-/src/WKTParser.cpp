@@ -43,6 +43,7 @@ list<Geometry*>* WKTParser:: readOSM(char* filename) {
 	
 	  in_stream.close();
    }	
+   cout<<"=====++++layer size: "<<layer->size()<<endl;
 	return layer;
 }
 
@@ -55,15 +56,16 @@ pair<int, string*> WKTParser :: extract(const string &str)
     // cstr now contains a c-string copy of str
 
     char *p = std::strtok (cstr,"\t");
-    
+    // cout<<"\n\nWKTParser extract st"<<endl;    
     while (p!=0)
     {
-      //std::cout << p << '\n';
+      // std::cout << p << " hii \n";
       string *token = new string(p);
       tokens.push_back(token);
       
       p = std::strtok(NULL,"\t");
     }
+    // cout<<"WKTParser extract end\n\n"<<endl;
     //cout<<tokens[0]<<"  ";
     int wayId;
     
@@ -92,6 +94,41 @@ geos::io::WKTReader wktreader;
     geom = wktreader.read(*p.second);
 */
 
+// original
+// list<Geometry*>* WKTParser :: parseGeoms(const FileSplits &split) 
+// {
+//   list<Geometry*> *geoms = new list<Geometry*>();
+  
+//   list<string>::const_iterator i;
+
+//   list<string> *contents = split.getContents();
+  
+//   geos::io::WKTReader wktreader;
+//   Geometry *geom = NULL;
+  
+//   for(i = contents->begin(); i!= contents->end(); i++) {
+
+//     if(false == ((string)*i).empty()) {
+       
+//        try
+//        {
+//         // cout<<"->> "<<*i<<" -<<"<<endl;
+//           Geometry *geom = wktreader.read(*i);
+          
+//           if(geom != NULL)
+//              geoms->push_back(geom);
+//        }
+//        catch(exception &e)
+//        {
+//         //cout<< e.what() <<endl;
+//        }
+
+//        Geometry *geom = parseString(*i);    
+//     } // end if
+//   } // end for
+//   return geoms;
+// }
+
 list<Geometry*>* WKTParser :: parseGeoms(const FileSplits &split) 
 {
   list<Geometry*> *geoms = new list<Geometry*>();
@@ -108,42 +145,91 @@ list<Geometry*>* WKTParser :: parseGeoms(const FileSplits &split)
     if(false == ((string)*i).empty()) {
        
        try
-  	   {
+       {
           Geometry *geom = wktreader.read(*i);
           
           if(geom != NULL)
              geoms->push_back(geom);
        }
        catch(exception &e)
-  	   {
-    		//cout<< e.what() <<endl;
-  	   }     
+       {
+        //cout<< e.what() <<endl;
+       }     
     } // end if
   } // end for
   return geoms;
 }
+
+// Buddhi
+// list<Geometry*>* WKTParser :: parseGeoms(const FileSplits &split) 
+// {
+//   list<Geometry*> *geoms = new list<Geometry*>();
+  
+//   list<string>::const_iterator i;
+
+//   list<string> *contents = split.getContents();
+  
+//   geos::io::WKTReader wktreader;
+//   Geometry *geom = NULL;
+  
+//   for(i = contents->begin(); i!= contents->end(); i++) {
+
+//     if(false == ((string)*i).empty()) {
+       
+//       //  try
+//   	   // {
+//       //   cout<<"->> "<<*i<<" -<<"<<endl;
+//       //     Geometry *geom = wktreader.read(*i);
+          
+//       //     if(geom != NULL)
+//       //        geoms->push_back(geom);
+//       //  }
+//       //  catch(exception &e)
+//   	   // {
+//     		// //cout<< e.what() <<endl;
+//   	   // }
+
+//        Geometry *geom = parseString2(*i);
+//         if(geom != NULL){
+//            geoms->push_back(geom);
+//         }    
+//     } // end if
+//   } // end for
+//   return geoms;
+// }
 
 list<Geometry*>* WKTParser :: parse(const FileSplits &split) 
 {
   list<Geometry*> *geoms = new list<Geometry*>();
   
   list<string>::const_iterator i;
+  int j=0,k=0;
 
   list<string> *contents = split.getContents();
+
+  // cout<<"\n\nWKTParser print st"<<endl;
+  // for (i = contents->begin(); i!= contents->end(); i++) {
+  //   pair<int, string*> p = extract(*i);
+  //   cout<<"**>> "<<(p.second->empty())<<endl;
+  // }
+  // cout<<"WKTParser print end\n\n"<<endl;
   
   for(i = contents->begin(); i!= contents->end(); i++) {
-
     if(false == ((string)*i).empty()) {
-        pair<int, string*> p = extract(*i);
-     
-        if(p.first != -1 && p.second != NULL && !p.second->empty()) {
-          Geometry *geom = parseString(p);
-    
-          if(geom != NULL)
-             geoms->push_back(geom);
+      pair<int, string*> p = extract(*i);
+   
+      if(p.first != -1 && p.second != NULL && !p.second->empty()) {
+        k++;
+        Geometry *geom = parseString(p);
+  
+        if(geom != NULL){
+           geoms->push_back(geom);
+           j++;
         }
+      }
     } // end if
   } // end for
+  cout<<k<<" parse geom size: "<<j<<endl;
   return geoms;
 }
 
@@ -158,6 +244,35 @@ Geometry* WKTParser :: parseString(const std::pair<int, string*> &p)
     
     ExtraInfo *extraInfo = new ExtraInfo();
     extraInfo->vertexStr = *p.second;
+    //int *id = new int;
+    //int arg = p.first;
+    //id = (int *)&p.first;
+    geom->setUserData(extraInfo);
+  }
+  catch(exception &e)
+  {
+    cout<< e.what() <<endl;
+    //cout<<p.second<<endl;
+    //cout<<geom->toString()<<endl;
+  }
+  
+   if(checkForEmptyCollection(geom))
+      return NULL;
+   else
+      return geom;
+}
+
+Geometry* WKTParser :: parseString2(string str) 
+{
+  geos::io::WKTReader wktreader;
+  Geometry *geom = NULL;
+  
+  try
+  {
+    geom = wktreader.read(str);
+    
+    ExtraInfo *extraInfo = new ExtraInfo();
+    extraInfo->vertexStr = str;
     //int *id = new int;
     //int arg = p.first;
     //id = (int *)&p.first;
@@ -433,7 +548,8 @@ map<int, list<Geometry*>* >*  WKTParser :: parseGeomFromLayerGrpByCell( pair< bb
 		       cellToGeomMap->insert(pair<int, list<Geometry*>* >(cellId, geoms));
 		    }
       	    
-      	    //cout<<geom->getNumGeometries() <<"_"<<geom->getNumPoints()<<", ";
+      	    // cout<<"parseGeomFromLayerGrpByCell "<<geom->getNumGeometries() <<"_"<<geom->getNumPoints()<<", ";
+            // cout<<geom->toString()<<" === "<<geom->getGeometryType()<<endl;
       	  
       	    bufOffset = bufOffset + geomStrLen;
    		}
@@ -444,7 +560,7 @@ map<int, list<Geometry*>* >*  WKTParser :: parseGeomFromLayerGrpByCell( pair< bb
       		//cout<<geom->toString()<<endl;
    		}   	  
     }
- 
+  // cout<<"done.. "<<endl;
    return cellToGeomMap;
 }
 
