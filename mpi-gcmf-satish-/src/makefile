@@ -209,4 +209,3 @@ fileRead.o: fileRead.cpp
 	
 clean:
 	rm *.o gpu refineLB refineMC
- 

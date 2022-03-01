@@ -14,12 +14,13 @@ map<long, int, std::greater<long> >* DynamicMPILoadCalculator :: calculateLoad(i
        loadMapByFileID = master(numFiles);
        for(int fileId = 0; fileId < numFiles; fileId++)
        {
-           if( loadMapByFileID->find(fileId) != loadMapByFileID->end()) {
-              loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId), fileId));           		
+        //    if( loadMapByFileID->find(fileId) != loadMapByFileID->end()) {    **buddhi comment
+              loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId), fileId));  //** original
+              // loadMapByLoadFactor->insert(pair<long, int>(loadMapByFileID->at(fileId)+fileId, fileId));     //**Buddhi        		
            	cout<<loadMapByFileID->at(fileId)<<" "<<fileId<<endl;
-           }
+        //    }
        }
-	cout<<"map size *"<<loadMapByLoadFactor->size()<<endl;
+	cout<<"map size from dynamic calc *"<<loadMapByLoadFactor->size()<<endl;
 
     }
     else {
@@ -54,7 +55,7 @@ int  reduce(int cellId, vector<Envelope*>* col1, vector<Envelope*>* col2)
     
     return joinPairs;
     
-    //cout<< "  "<<pairs->size() <<endl;
+    cout<< "reduce: uncomment:  "<<joinPairs <<endl;
 }
 */
 
@@ -95,7 +96,7 @@ void DynamicMPILoadCalculator :: slave(int numFiles, string l1Mbr_folder, string
             output = reduce(work, l1Envs, l2Envs);
             filterResult.pairs = output;
             filterResult.fileID = work; 
-           // cout<<l1File<<" "<<l1File<<endl;
+           cout<<l1File<<" "<<l1File<<" -- "<<output<<endl;
         }
         else
         {

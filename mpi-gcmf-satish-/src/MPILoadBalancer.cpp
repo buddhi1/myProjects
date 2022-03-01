@@ -77,17 +77,17 @@ int LoadBalancer :: masterRefinementScheduler(int nProcs, map<long, int, std::gr
 	vector<int> fileNames;
 	cout<<"map size  "<<loadByCell->size()<<endl;
 	// origianl ----------------- start
-	// for ( const auto &myPair : *loadByCell ) {
- //        cout << myPair.second << " *-> " << myPair.first << endl;
- //        fileNames.push_back(myPair.second);
- //    }
+	for ( const auto &myPair : *loadByCell ) {
+        cout << myPair.second << " *-> " << myPair.first << endl;
+        fileNames.push_back(myPair.second);
+    }
 	// origianl ----------------- end
 
 	// manual push
-	for (int i=0; i < 6; i++) {
-        cout << i << " *-> 115544"  << endl;
-        fileNames.push_back(i);
-    }
+	// for (int i=0; i < 6; i++) {
+ //        cout << i << " *-> 115544"  << endl;
+ //        fileNames.push_back(i);
+ //    }
 /*
 * Seed the slaves.
 */
@@ -226,11 +226,13 @@ int LoadBalancer :: refineOneCell(char *fileLayer1, char *fileLayer2)
         // cout<<"Output Pairs Task "<<fileLayer1<<": "<<pairs->size()<<endl;
         cout<<"refineOneCell "<<fileLayer1<<": "<<geomsLayer1->size()<<", "<<fileLayer2<<": "<<geomsLayer2->size()<<endl;
 
-        if (strcmp(fileLayer1,"../../data/64Parts/50")==0 || strcmp(fileLayer2, "../../data/64Parts/50")==0 || strcmp(fileLayer1,"../../data/64Parts/38")==0 || strcmp(fileLayer2, "../../data/64Parts/38")==0 || strcmp(fileLayer1,"../../data/64Parts/45")==0 || strcmp(fileLayer2, "../../data/64Parts/45")==0 || strcmp(fileLayer1,"../../data/64Parts/39")==0 || strcmp(fileLayer2, "../../data/64Parts/39")==0 || strcmp(fileLayer1,"../../data/64Parts/35")==0 || strcmp(fileLayer2, "../../data/64Parts/35")==0 || strcmp(fileLayer1,"../../data/64Parts/57")==0 || strcmp(fileLayer2, "../../data/64Parts/57")==0 || strcmp(fileLayer1,"../../data/64Parts/51")==0 || strcmp(fileLayer2, "../../data/64Parts/51")==0 || strcmp(fileLayer1,"../../data/64Parts/44")==0 || strcmp(fileLayer2, "../../data/64Parts/44")==0 || strcmp(fileLayer1,"../../data/64Parts/52")==0 || strcmp(fileLayer2, "../../data/64Parts/52")==0 || strcmp(fileLayer1,"../../data/64Parts/12")==0 || strcmp(fileLayer2, "../../data/64Parts/12")==0)
-        {
-        	cout<<"Error file"<<endl;
-        	return 0;
-        }
+		// ******* test to avoid non-working files ------ Buddhi
+
+        // if (strcmp(fileLayer1,"../../data/64Parts/50")==0 || strcmp(fileLayer2, "../../data/64Parts/50")==0 || strcmp(fileLayer1,"../../data/64Parts/38")==0 || strcmp(fileLayer2, "../../data/64Parts/38")==0 || strcmp(fileLayer1,"../../data/64Parts/45")==0 || strcmp(fileLayer2, "../../data/64Parts/45")==0 || strcmp(fileLayer1,"../../data/64Parts/39")==0 || strcmp(fileLayer2, "../../data/64Parts/39")==0 || strcmp(fileLayer1,"../../data/64Parts/35")==0 || strcmp(fileLayer2, "../../data/64Parts/35")==0 || strcmp(fileLayer1,"../../data/64Parts/57")==0 || strcmp(fileLayer2, "../../data/64Parts/57")==0 || strcmp(fileLayer1,"../../data/64Parts/51")==0 || strcmp(fileLayer2, "../../data/64Parts/51")==0 || strcmp(fileLayer1,"../../data/64Parts/44")==0 || strcmp(fileLayer2, "../../data/64Parts/44")==0 || strcmp(fileLayer1,"../../data/64Parts/52")==0 || strcmp(fileLayer2, "../../data/64Parts/52")==0 || strcmp(fileLayer1,"../../data/64Parts/12")==0 || strcmp(fileLayer2, "../../data/64Parts/12")==0)
+        // {
+        // 	cout<<"Error file"<<endl;
+        // 	return 0;
+        // }
 
         CudaJoinInterface reducers;
         return reducers.createReducers2files(geomsLayer1, geomsLayer2);
@@ -415,7 +417,7 @@ long LoadBalancer :: reduce(int cellId, list<Envelope*>* col1, list<Envelope*>* 
     
     return joinPairs;
     
-    //cout<< "  "<<pairs->size() <<endl;
+    // cout<< "reduce::  "<<joinPairs <<endl;
 }
 
 map<long, int, std::greater<long> >* LoadBalancer :: createReducers(int cellCount, map<int, list<Envelope*>* >* geomsByCellMap,
